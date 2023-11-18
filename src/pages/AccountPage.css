@@ -1,0 +1,137 @@
+.account-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.account-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+
+}
+
+
+.sendButton {
+    width: 150px;
+    height: 40px;
+    background-color: #4CAF50;
+    color: #000;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 1px solid #4CAF50;
+    margin: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 50px 0;
+
+
+    &:hover {
+        background-color: #fff;
+        color: #4CAF50;
+        border: 1px solid #4CAF50;
+    }
+
+    &:active {
+        transform: translateY(2px);
+    }
+}
+
+.logoutButton {
+    width: 150px;
+    height: 40px;
+    background-color: #E83B46;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 5px;
+    border: 1px solid #E83B46;
+    margin: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    outline: none;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 20px;
+
+
+    &:hover {
+        background-color: #fff;
+        color: #E83B46;
+        border: 1px solid #E83B46;
+    }
+
+    &:active {
+        transform: translateY(2px);
+    }
+}
+
+.account-info-container {
+    display: flex;
+    align-items: center;
+}
+
+.email-verify-container {
+    display: flex;
+    align-items: center;
+    margin: 20px 0 20px 0;
+    background-color: #E83B46;
+    padding: 5px 0 5px 0;
+}
+
+.email-verify-text {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.email-verify-send {
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    margin-left: 20px;
+    border: 1px solid white;
+    padding: 0 6px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+
+    &:hover {
+        background-color: white;
+        color: #E83B46;
+    }
+
+    &:active {
+        scale: 0.95;
+    }
+}
+
+
+.change-pass-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #E83B46;
+    width: 20%;
+}
+
+.change-pass-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #E83B46;
+    cursor: pointer;
+}
+
+.text {
+    margin-bottom: 20px
+}

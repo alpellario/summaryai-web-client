@@ -1,0 +1,136 @@
+.myAccountContent {
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  padding: 40px;
+  width: 60%;
+  max-height: 68%; /*serkan old500px*/ 
+  margin-top: 80px;
+}
+
+.infoContainer {/*serkan old none*/
+  height: 100%;
+}
+
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+
+  flex-grow: 0;
+}
+
+.userImage {
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  margin-right: 20px;
+}
+
+.userName {
+  font-size: 20px;
+}
+
+.userInformationRow {
+  margin-bottom: 20px;
+}
+
+.userNameBold {
+  font-size: 20px;
+  font-weight: 600;
+  color: #4e617e;
+}
+
+.userCredits {
+  font-size: 16px;
+}
+
+.creditsButton {
+  background-color: #4e617e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 70px;
+  height: 30px;
+  font-size: 10px;
+  margin-left: 10px;
+}
+
+.summaryHistoryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px;
+  height: 50px;
+  margin-top: 15px;
+  border-width: 1px;
+  border-color: #4e617e;
+  border-radius: 5px;
+  border-style: solid;
+  cursor: pointer;
+}
+
+.summaryHistoryTitle {
+  white-space: nowrap; /* Metni tek bir satırda tutar */
+  overflow: hidden; /* İçeriğin dışarı taşmasını engeller */
+  text-overflow: ellipsis; /* Kesilen metnin sonuna üç nokta ekler */
+  width: 80%; /* Gerekirse genişliği ayarlayabilirsiniz */
+  display: block;
+  font-size: 18px;
+  color: #4e617e;
+  font-weight: 500;
+}
+
+.summaryDate {
+  font-size: 14px;
+  color: #000;
+  font-weight: 200;
+}
+
+.settingsItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px;
+  margin-top: 15px;
+  border-width: 1px;
+  border-color: #4e617e;
+  border-style: solid;
+  border-radius: 5px;
+}
+
+.settingsItemTitleContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.settingsItemTitle {
+  flex: 1;
+  margin-right: 20px;
+  font-size: 18px;
+  color: #4e617e;
+  font-weight: 500;
+}
+
+.settingsItemDescription {
+  font-size: 11px;
+  color: #a9a9ac;
+  font-weight: 500;
+}
+
+.settingsItemActionDescription {
+  font-size: 13px;
+  color: #4e617e;
+  font-weight: 500;
+}
+
+.historyList {/*serkan old none*/
+  height: 323px;
+}
+

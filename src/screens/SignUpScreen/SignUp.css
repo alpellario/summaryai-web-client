@@ -1,0 +1,11 @@
+
+.privacyPolicyAccount {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 12px;
+}
+
+.privacyPolicyAccount a {
+  color: #4e617e; /* Görseldeki renk */
+  cursor: pointer;
+}

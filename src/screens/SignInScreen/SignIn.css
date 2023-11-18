@@ -1,0 +1,22 @@
+
+.forgotPassword {
+  align-self: flex-end;
+  color: #4e617e; /* Görseldeki renk */
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.forgotPassword a {
+  color: #4e617e; /* Görseldeki renk */
+  cursor: pointer;
+}
+
+.signUpPrompt {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.signUpPrompt a {
+  color: #4e617e; /* Görseldeki renk */
+  cursor: pointer;
+}

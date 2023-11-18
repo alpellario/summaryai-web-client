@@ -1,0 +1,18 @@
+.checkEmailTitle {
+  font-weight: 500;
+  color: #4e617e;
+  font-size: 30px;
+}
+
+.description {
+  margin-top: 50px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #4a4a4a;
+  text-align: center;
+}
+
+.description a {
+  color: #4e617e;
+  cursor: pointer;
+}

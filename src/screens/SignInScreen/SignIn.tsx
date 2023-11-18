@@ -1,0 +1,151 @@
+import { LoadingButton } from "@mui/lab";
+import { Alert, Button, TextField } from "@mui/material";
+import ApiManager from "../../api/ApiManager";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import { RootState } from "store";
+import useLoading from "../../utils/hooks/useLoading";
+import "./SignIn.css";
+import { setUser } from "../../store/slices/userSlice";
+import GoogleButton from "../../components/GoogleButton/GoogleButton";
+
+const SingIn = () => {
+  // redux
+  const { userData, token } = useSelector((state: RootState) => state.user);
+
+  // hooks
+  const { loading, withLoading } = useLoading();
+  const { loading: screenLoading, withLoading: withScreenLoading } =
+    useLoading();
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  // state
+  const [email, setEmail] = useState<string>("user1@gmail.com");
+  const [password, setPassword] = useState<string>("pass1234");
+  const [error, setError] = useState<string>("");
+
+  useEffect(() => {
+    getUserAccount();
+  }, []);
+
+  const getUserAccount = async () => {
+    withScreenLoading(async () => {
+      const account = await ApiManager.getUserAccount();
+      if (account.success) {
+        navigate("/myaccount");
+      }
+    });
+  };
+
+  const onSignIn = () => {
+    withLoading(async () => {
+      const login = await ApiManager.login({
+        email,
+        password,
+      });
+
+      if (!login.success) {
+        return setError(login.message);
+      }
+
+      window.postMessage(
+        {
+          type: "SET_SUMMARYAI_SECRET_KEY",
+          token: login.token,
+        },
+        "*"
+      );
+
+      dispatch(setUser(login));
+      navigate("/myaccount");
+    });
+  };
+
+  const onEmailChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
+    setEmail(e.target.value);
+    clearError();
+  };
+
+  const onPasswordChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
+    setPassword(e.target.value);
+    clearError();
+  };
+
+  const clearError = () => {
+    setError("");
+  };
+
+  const onForgotPasswordClick = () => {
+    navigate("/resetPassword");
+  };
+
+  return (
+    <div className="container">
+      <div className="content">
+        {screenLoading ? null : (
+          <>
+            <GoogleButton />
+            <div style={{ marginTop: 10, marginBottom: 10 }}>OR</div>
+            {error && (
+              <Alert severity="error" style={{ width: "100%" }}>
+                {error}
+              </Alert>
+            )}
+            <TextField
+              variant="filled"
+              label="Email"
+              type="email"
+              onChange={onEmailChange}
+              style={styles.input}
+              fullWidth
+            />
+            <TextField
+              variant="filled"
+              label="Password"
+              type="password"
+              onChange={onPasswordChange}
+              style={styles.input}
+              fullWidth
+            />
+            <Button variant="text" onClick={onForgotPasswordClick}>
+              Forgot Password
+            </Button>
+            {/* <div className="forgotPassword">
+              <Link to="/resetPassword">Forgot Password</Link>
+            </div> */}
+            <LoadingButton
+              variant="contained"
+              style={styles.button}
+              onClick={onSignIn}
+              loading={loading}
+            >
+              SIGN IN
+            </LoadingButton>
+            <div className="signUpPrompt">
+              Don't you have account? <Link to="/signup">Sign Up</Link>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+};
+
+const styles = {
+  button: {
+    marginTop: 20,
+  },
+  input: {
+    marginTop: 10,
+  },
+  forgotPassword: {},
+};
+
+export default SingIn;
