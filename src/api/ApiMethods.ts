@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import store from "../store";
 import { clearUser } from "../store/slices/userSlice";
 
-const baseURL = "/";
+const baseURL = "https://summaryai.io";
 
 // header
 const headers = {
