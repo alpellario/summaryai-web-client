@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import store from "../store";
 import { clearUser } from "../store/slices/userSlice";
 
-const baseURL = "/";
+const baseURL = "http://37.148.211.20:3001";
 
 // header
 const headers = {
