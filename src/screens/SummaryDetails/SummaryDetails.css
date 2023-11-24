@@ -5,7 +5,7 @@
   border-radius: 5px;
   padding: 40px;
   width: 60%;
-  margin-top: 80px;
+
 }
 
 .summaryDetailsTitleContainer {
@@ -14,9 +14,27 @@
   align-items: center;
 }
 
+.back-container {
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+}
+
+.back-icon {
+  width: 20px;
+  height: 20px;
+  fill: #4e617e;
+  margin-bottom: -1.5px;
+}
+
+.back-container:hover {
+  opacity: 0.7;
+}
+
 .summaryDetailsTitle {
   flex: 1;
   margin-right: 20px;
+  margin-left: 5px;
   font-size: 25px;
   color: #4e617e;
   font-weight: 500;
@@ -36,4 +54,37 @@
   height: 400px;
   overflow-y: auto;
   line-height: 1.5;
+  text-align: justify;
+  padding-right: 5px;
+
+}
+
+
+.summaryDetailsText::-webkit-scrollbar {
+  width: 10px;
+  /* Scrollbar genişliği */
+}
+
+.summaryDetailsText::-webkit-scrollbar-track {
+  background: #F9F9F9;
+  /* Scrollbar track (arka plan) rengi */
+}
+
+.summaryDetailsText::-webkit-scrollbar-thumb {
+  background: #CCCCCC;
+  /* Scrollbar thumb (hareketli kısım) rengi */
+  border-radius: 5px;
+}
+
+.summaryDetailsText::-webkit-scrollbar-thumb:hover {
+  background: #B0B0B0;
+  /* Scrollbar thumb üzerine gelindiğinde rengi */
+}
+
+/* Firefox için scrollbar stilleri */
+.summaryDetailsText {
+  scrollbar-width: thin;
+  /* "auto" veya "thin" */
+  scrollbar-color: #CCCCCC #F9F9F9;
+  /* thumb ve track renkleri */
 }

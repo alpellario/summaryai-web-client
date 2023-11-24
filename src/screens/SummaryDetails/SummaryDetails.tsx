@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, useNavigate } from "react-router-dom";
 import useLoading from "../../utils/hooks/useLoading";
 import ApiManager from "../../api/ApiManager";
+import { MdOutlineArrowBackIos } from "react-icons/md";
 
 import "./SummaryDetails.css";
 
@@ -9,6 +10,7 @@ const SummaryDetails = () => {
   const { summaryId } = useParams();
 
   const location = useLocation();
+  const navigate = useNavigate();
 
   const { loading, withLoading } = useLoading();
 
@@ -40,7 +42,11 @@ const SummaryDetails = () => {
     <div className="container">
       <div className="summaryDetailsContent">
         <div className="summaryDetailsTitleContainer">
-          <span className="summaryDetailsTitle">{history?.title}</span>
+          <div className="back-container" onClick={() => navigate('/myaccount')}>
+            <MdOutlineArrowBackIos className="back-icon" />
+            <span className="summaryDetailsTitle">{history?.title}</span>
+          </div>
+          
           <span className="summaryDetailsDate">
             {history && formatDate(history?.date)}
           </span>

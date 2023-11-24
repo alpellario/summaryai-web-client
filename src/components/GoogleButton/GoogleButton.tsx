@@ -1,11 +1,12 @@
 import React from "react";
 import { Google } from "@mui/icons-material";
+import { FcGoogle } from 'react-icons/fc';
 
 import "./GoogleButton.css";
 import { LoadingButton } from "@mui/lab";
 const GoogleButton = ({ text, customStyle, onClick }: any) => {
   const handleGoogleOAuth = () => {
-    window.location.href = "http://localhost:3001/auth/google";
+    window.location.href = "https://summaryai.io/auth/google";
   };
 
   return (
@@ -14,7 +15,10 @@ const GoogleButton = ({ text, customStyle, onClick }: any) => {
       style={styles.button}
       onClick={handleGoogleOAuth}
     >
-      <Google style={styles.googleLogo} />
+      <div className="google-logo-container">
+        <FcGoogle className="google-logo" />
+      </div>
+      
       <div style={styles.text}>Sign in with Google</div>
     </LoadingButton>
   );
@@ -23,14 +27,19 @@ const GoogleButton = ({ text, customStyle, onClick }: any) => {
 const styles = {
   button: {
     backgroundColor: "#4285F4",
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    borderRadius: 6,
+    padding: 0,
+    height: 40,
+    overflow: "hidden",
+    marginBottom: 10,
   },
-  googleLogo: {
-    width: "30px",
-    height: "30px",
-    color: "#de5246",
-  },
+
   text: {
-    marginLeft: 10,
+    marginLeft: 20,
   },
 };
 

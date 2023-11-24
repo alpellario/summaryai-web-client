@@ -5,7 +5,7 @@ import "./ContactUs.css";
 const ContactUs = () => {
   return (
     <div className="container">
-      <div className="content">
+      <div className="content contentContactUs">
         <span className="contactUsTitle">Contact Us</span>
         <textarea
           placeholder="We are glad to hear your opinions"

@@ -1,15 +1,18 @@
 .myAccountContent {
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   background-color: #f9f9f9;
   border-radius: 5px;
-  padding: 40px;
+  padding: 25px 40px 20px 40px;
+  min-width: 772px;
   width: 60%;
-  max-height: 68%; /*serkan old500px*/ 
-  margin-top: 80px;
+  height: 70%;
+
 }
 
-.infoContainer {/*serkan old none*/
+.infoContainer {
+  /*serkan old none*/
   height: 100%;
 }
 
@@ -18,8 +21,9 @@
   display: flex;
   align-items: center;
   flex-direction: row;
-
-  flex-grow: 0;
+  margin-bottom: 15px;
+  height: 24px;
+  flex-shrink: 0;
 }
 
 .userImage {
@@ -31,6 +35,7 @@
 
 .userName {
   font-size: 20px;
+  display: flex;
 }
 
 .userInformationRow {
@@ -41,6 +46,7 @@
   font-size: 20px;
   font-weight: 600;
   color: #4e617e;
+  margin-left: 5px;
 }
 
 .userCredits {
@@ -59,6 +65,18 @@
   margin-left: 10px;
 }
 
+.tabLayoutContainer {
+  display: flex;
+  flex-direction: column;
+  /* height: 250px; */
+}
+
+.tabsContainer {
+  border-bottom: 1px solid #a9a9ac;
+  height: 50px;
+  flex-shrink: 0;
+}
+
 .summaryHistoryItem {
   display: flex;
   justify-content: space-between;
@@ -75,10 +93,14 @@
 }
 
 .summaryHistoryTitle {
-  white-space: nowrap; /* Metni tek bir satırda tutar */
-  overflow: hidden; /* İçeriğin dışarı taşmasını engeller */
-  text-overflow: ellipsis; /* Kesilen metnin sonuna üç nokta ekler */
-  width: 80%; /* Gerekirse genişliği ayarlayabilirsiniz */
+  white-space: nowrap;
+  /* Metni tek bir satırda tutar */
+  overflow: hidden;
+  /* İçeriğin dışarı taşmasını engeller */
+  text-overflow: ellipsis;
+  /* Kesilen metnin sonuna üç nokta ekler */
+  width: 80%;
+  /* Gerekirse genişliği ayarlayabilirsiniz */
   display: block;
   font-size: 18px;
   color: #4e617e;
@@ -130,7 +152,46 @@
   font-weight: 500;
 }
 
-.historyList {/*serkan old none*/
+.history-list {
+  height: 100%;
+  overflow-y: auto;
+  padding-right: 5px;
+  /* position: relative; */
+
+}
+
+.historyList2 {
+  /*serkan old none*/
   height: 323px;
 }
 
+
+
+.history-list::-webkit-scrollbar {
+  width: 10px;
+  /* Scrollbar genişliği */
+}
+
+.history-list::-webkit-scrollbar-track {
+  background: #F9F9F9;
+  /* Scrollbar track (arka plan) rengi */
+}
+
+.history-list::-webkit-scrollbar-thumb {
+  background: #CCCCCC;
+  /* Scrollbar thumb (hareketli kısım) rengi */
+  border-radius: 5px;
+}
+
+.history-list::-webkit-scrollbar-thumb:hover {
+  background: #B0B0B0;
+  /* Scrollbar thumb üzerine gelindiğinde rengi */
+}
+
+/* Firefox için scrollbar stilleri */
+.history-list {
+  scrollbar-width: thin;
+  /* "auto" veya "thin" */
+  scrollbar-color: #CCCCCC #F9F9F9;
+  /* thumb ve track renkleri */
+}

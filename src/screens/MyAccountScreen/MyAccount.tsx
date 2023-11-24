@@ -3,6 +3,8 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import Pagination from "@mui/material/Pagination";
+import PropTypes from 'prop-types';
 
 import "./MyAccount.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -69,8 +71,9 @@ const MyAccount = () => {
       <div
         role="tabpanel"
         hidden={value !== index}
-        id={`simple-tabpanel-${index}`}
-        aria-labelledby={`simple-tab-${index}`}
+        // id={`simple-tabpanel-${index}`}
+        className="tabPanelContainer"
+        // aria-labelledby={`simple-tab-${index}`}
         {...other}
       >
         {value === index && (
@@ -123,6 +126,32 @@ const MyAccount = () => {
     });
   };
 
+  function TabPanel(props: any) {
+    const { children, value, index, ...other } = props;
+  
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        // id={`full-width-tabpanel-${index}`}
+        // aria-labelledby={`full-width-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <div className="history-list">
+            {children}
+          </div>
+        )}
+      </div>
+    );
+  }
+  
+  TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+  };
+
   return (
     <div className="container">
       <div className="myAccountContent">
@@ -132,13 +161,13 @@ const MyAccount = () => {
             alt="User Profile"
             className="userImage"
           /> */}
-          <div>
-            <span className="userName">
-              Hello,{" "}
-              <span className="userNameBold">
+          
+            <div className="userName">
+              Hello,
+              <div className="userNameBold">
                 {userData?.email.split("@")[0]}.
-              </span>
-            </span>
+              </div>
+            </div>
 
             {/* <div className="userInformationRow">
               <span className="userCredits">
@@ -148,19 +177,17 @@ const MyAccount = () => {
               </span>
               <button className="creditsButton">Get Credits</button>
             </div> */}
-          </div>
+          
         </div>
-        <Box
-          sx={{
-            width: "100%",
-            height: "450px" /*serkan old 100%*/,
-          }}
+        <div
+          className="tabLayoutContainer"
         >
-          <Box sx={{ borderBottom: 1, borderColor: "#A9A9AC" }}>
+          <div className="tabsContainer">
             <Tabs
               value={value}
               onChange={handleChange}
-              aria-label="basic tabs example"
+              variant="fullWidth"
+              
             >
               <Tab
                 style={{
@@ -171,19 +198,20 @@ const MyAccount = () => {
               />
               <Tab label="Settings" {...a11yProps(1)} />
             </Tabs>
-          </Box>
+          </div>
 
-          <CustomTabPanel value={value} index={0}>
-            <div className="historyList">
+          <TabPanel  value={value} index={0}>
+            {/* <div className="historyList"> */}
               <List
                 data={history?.reverse()}
                 loading={loading}
                 renderItem={renderHistoryItem}
               />
-            </div>
-          </CustomTabPanel>
+ 
+            {/* </div> */}
+          </TabPanel >
 
-          <CustomTabPanel value={value} index={1}>
+          <TabPanel  value={value} index={1}>
             <div className="settingsItem">
               <div className="settingsItemTitleContainer">
                 <span className="settingsItemTitle">Change Password</span>
@@ -211,8 +239,9 @@ const MyAccount = () => {
                 </LoadingButton>
               )}
             </div>
-          </CustomTabPanel>
-        </Box>
+            
+          </TabPanel >
+        </div>
       </div>
     </div>
   );

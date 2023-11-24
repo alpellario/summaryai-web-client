@@ -5,7 +5,7 @@ import "./CheckEmail.css";
 const CheckEmail = () => {
   return (
     <div className="container">
-      <div className="content">
+      <div className="content contentCheckEmail">
         <span className="checkEmailTitle">Check Email</span>
         <span className="description">
           Please check your email inbox and click on the provided link to reset

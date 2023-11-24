@@ -40,7 +40,7 @@ const ResetPassword = () => {
 
   return (
     <div className="container">
-      <div className="content">
+      <div className="content resetPasswordContent">
         <span className="resetPasswordTitle">Reset Password</span>
         {error && (
           <Alert severity="error" style={{ width: "100%" }}>

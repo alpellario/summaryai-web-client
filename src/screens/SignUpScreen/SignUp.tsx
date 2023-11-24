@@ -119,6 +119,10 @@ const SignUp = () => {
           <br />
           <Link to="/">Terms and Conditions</Link> and{" "}
           <Link to="/">Privacy Policy</Link>.
+
+          <div className="signUpPrompt">
+          Already have an account? <Link to="/">Sign In</Link>
+            </div>
         </div>
       </div>
     </div>
