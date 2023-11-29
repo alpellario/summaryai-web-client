@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 
 // import HomePage from "./pages/HomePage";
 // import AccountPage from "./pages/AccountPage";
@@ -15,6 +15,7 @@ import MyAccount from "./screens/MyAccountScreen/MyAccount";
 import SummaryDetails from "./screens/SummaryDetails/SummaryDetails";
 import ContactUs from "./screens/ContactUsScreen/ContactUs";
 import VerifyResetPassword from "./screens/VerifyResetPasswordScreen/VerifyResetPassword";
+import LandingPage from "./screens/LandingScreen/LandingScreen";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Container, Stack } from "@mui/material";
@@ -33,13 +34,21 @@ const theme = createTheme({
   },
 });
 
+const HeaderWrapper = () => {
+  const location = useLocation();
+
+  return location.pathname !== '/home' ? <Header /> : null;
+};
+
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <Header />
+      <HeaderWrapper />
+        
         <Routes>
           <Route path="/" element={<SignIn />} />
+          <Route path="/home" element={<LandingPage />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/myaccount" element={<MyAccount />} />
           <Route path="/resetpassword" element={<ResetPassword />} />

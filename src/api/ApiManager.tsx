@@ -64,6 +64,8 @@ class ApiManager {
     const url = ENDPOINTS.GET_HISTORY_BY_ID(historyId);
     return ApiMethods.get(url);
   };
+
+
 }
 
 export default ApiManager;

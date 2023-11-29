@@ -23,8 +23,6 @@ const Header = () => {
     withLoading(async () => {
       await ApiManager.logout();
 
-      console.log("çıkış yapılıyor");
-
       window.postMessage(
         {
           type: "DELETE_SUMMARYAI_SECRET_KEY",
