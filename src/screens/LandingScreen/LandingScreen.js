@@ -60,6 +60,7 @@ const LandingScreen = () => {
         <div className="landing-right-content">
           <h1 className="landing-right-header" ref={headerRef}>
             The best AI extension ever made
+            {/* <span className="free-text"> - free</span> */}
             {showLogo && (
               <div
                 className={`text-logo ${
@@ -97,13 +98,13 @@ const LandingScreen = () => {
             className="auth-button auth-button-login"
             onClick={() => navigate("/")}
           >
-            Login
+            <span className="auth-button-text">Login</span>
           </div>
           <div
             className="auth-button auth-button-signup"
             onClick={() => navigate("/signup")}
           >
-            Signup
+            <span className="auth-button-text">Signup</span>
           </div>
         </div>
 

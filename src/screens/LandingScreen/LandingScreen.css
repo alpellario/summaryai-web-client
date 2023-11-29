@@ -42,6 +42,12 @@
     font-size: 30px;
 }
 
+.free-text {
+    font-weight: bold;
+    color: #4CAF50;
+    margin-left: 10px;
+}
+
 .right-panel-header {
     color: #fff;
     font-size: 40px;
@@ -76,11 +82,16 @@
     line-height: 50px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
     transition: background-color 0.3s, box-shadow 0.3s;
+
 }
 
 .auth-button:hover {
     background-color: #437dd3;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.auth-button-text {
+    margin-top: -4px;
 }
 
 

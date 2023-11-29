@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./ExtensionReview.css";
 import { FaCircle } from "react-icons/fa";
 import { BiSolidSend } from "react-icons/bi";
+import FlagMenu from "../FlagMenu/FlagMenu";
 
 const ExtensionReview = () => {
   const [targetLanguage, setTargetLanguage] = useState("en");
@@ -10,7 +11,8 @@ const ExtensionReview = () => {
   const [streamedTitle, setStreamedTitle] = useState("");
   const [streamedContent, setStreamedContent] = useState("");
   const [loading, setLoading] = useState(true);
-  const [startLangugeSequence, setStartLangugeSequence] = useState(false);
+  const [isScaled, setIsScaled] = useState(false);
+  const [endAnimation, setEndAnimation] = useState(false);
 
   const [isHovered, setIsHovered] = useState(false);
   const [isActive, setIsActive] = useState(false);
@@ -105,6 +107,15 @@ const ExtensionReview = () => {
                     ];
                     languageOrder.forEach((lang, index) => {
                       setTimeout(() => {
+                        setIsScaled(true);
+
+                        setTimeout(() => {
+                          setIsScaled(false);
+                          if (index === languageOrder.length - 1) {
+                            setEndAnimation(true);
+                          }
+                        }, 500);
+
                         setTargetLanguage(lang);
                         setStreamedTitle(translatedData[lang].title);
                         setStreamedContent(translatedData[lang].content);
@@ -121,6 +132,12 @@ const ExtensionReview = () => {
     );
   }, [page]);
 
+  function handleTranslate(lang) {
+    setTargetLanguage(lang);
+    setStreamedTitle(translatedData[lang].title);
+    setStreamedContent(translatedData[lang].content);
+  }
+
   return (
     <div className="extension-container">
       <div className="header-container-2">
@@ -133,11 +150,18 @@ const ExtensionReview = () => {
           <div className="header-title">SummaryAI</div>
         </div>
         <div className="header-buttons">
-          <img
-            className="language-img"
+          <FlagMenu
+            targetLanguage={targetLanguage}
+            handleTranslate={handleTranslate}
+            page={page}
+            isScaled={isScaled}
+            endAnimation={endAnimation}
+          />
+          {/* <img
+            className={`language-img ${isScaled ? "scale" : ""}`}
             alt="Language"
             src={require(`../../assets/images/flags/${targetLanguage}.png`)}
-          />
+          /> */}
           <FaCircle className="header-btn close-btn" />
         </div>
       </div>

@@ -45,7 +45,6 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <Router>
       <HeaderWrapper />
-        
         <Routes>
           <Route path="/" element={<SignIn />} />
           <Route path="/home" element={<LandingPage />} />
