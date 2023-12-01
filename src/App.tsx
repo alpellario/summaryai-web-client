@@ -40,7 +40,7 @@ const theme = createTheme({
 const HeaderWrapper = () => {
   const location = useLocation();
 
-  return location.pathname !== '/home' && location.pathname !== '/promotionpreview' && location.pathname !== '/promotiontext' && location.pathname !== '/popups' ? <Header /> : null;
+  return location.pathname !== '/home' && location.pathname !== '/promotionpreview' && location.pathname !== '/promotiontext' ? <Header /> : null;
 };
 
 const App = () => {
