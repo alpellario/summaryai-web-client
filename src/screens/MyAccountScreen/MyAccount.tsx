@@ -49,6 +49,7 @@ const MyAccount = () => {
   const getUserData = () => {
     withLoading(async () => {
       const userData = await ApiManager.getUserAccount();
+      console.log('userData', userData);
 
       if (userData.success) {
 

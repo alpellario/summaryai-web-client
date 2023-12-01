@@ -16,6 +16,7 @@ const ENDPOINTS = {
   GET_USER_HISTORY: () => "/users/history",
   GET_HISTORY_BY_ID: (historyId: string) => `/users/getHistoryById/${historyId}`,
   GET_USER_ACCOUNT: () => "/users/account",
+  POST_USER_CONTACT: () => "/users/contact",
 };
 
 export default ENDPOINTS;

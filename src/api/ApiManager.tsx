@@ -64,8 +64,18 @@ class ApiManager {
     const url = ENDPOINTS.GET_HISTORY_BY_ID(historyId);
     return ApiMethods.get(url);
   };
-
-
+  static contactUs = ({
+    email,
+    contactType,
+    message
+  }: {
+    email: string;
+    contactType: "authorized" | "unauthorized";
+    message?: string;
+  }) => {
+    const url = ENDPOINTS.POST_USER_CONTACT();
+    return ApiMethods.post(url, { email, contactType });
+  };
 }
 
 export default ApiManager;
