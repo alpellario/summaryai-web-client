@@ -20,9 +20,9 @@ const SignUp = () => {
   const navigate = useNavigate();
 
   // state
-  const [email, setEmail] = useState<string>("furkanu48@gmail.com");
-  const [password, setPassword] = useState<string>("furkan321");
-  const [passwordConfirm, setPasswordConfirm] = useState<string>("furkan321");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [passwordConfirm, setPasswordConfirm] = useState<string>("");
   const [error, setError] = useState<string>("");
 
   const onSignUp = () => {
@@ -117,8 +117,7 @@ const SignUp = () => {
         <div className="privacyPolicyAccount">
           By creating your account, you agree to our
           <br />
-          <Link to="/">Terms and Conditions</Link> and{" "}
-          <Link to="/">Privacy Policy</Link>.
+          <Link to="/privacypolicy">Privacy Policy</Link>.
 
           <div className="signUpPrompt">
           Already have an account? <Link to="/">Sign In</Link>

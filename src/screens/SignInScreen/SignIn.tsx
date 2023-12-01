@@ -23,8 +23,8 @@ const SingIn = () => {
   const navigate = useNavigate();
 
   // state
-  const [email, setEmail] = useState<string>("user1@gmail.com");
-  const [password, setPassword] = useState<string>("pass1234");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
 
   useEffect(() => {
