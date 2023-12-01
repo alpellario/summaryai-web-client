@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react
 
 import Header from "./components/Header";
 
-import LandingPage from "./screens/LandingScreen/LandingPage";
+import LandingPage from "./screens/LandingScreen/LandingScreen";
 import SignIn from "./screens/SignInScreen/SignIn";
 import SignUp from "./screens/SignUpScreen/SignUp";
 import ResetPassword from "./screens/ResetPasswordScreen/ResetPassword";

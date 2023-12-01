@@ -87,7 +87,7 @@ const LandingScreen = () => {
         <div className="auth-button-container">
           <div
             className="auth-button auth-button-login"
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/signin")}
           >
             <span className="auth-button-text">Login</span>
           </div>
@@ -107,8 +107,7 @@ const LandingScreen = () => {
             />
           </div>
           <div className="footer-links">
-            <a href="/terms">Terms of use</a> |{" "}
-            <a href="/privacy">Privacy policy</a>
+            <a href="/privacypolicy">Privacy policy</a>
           </div>
         </div>
       </div>
