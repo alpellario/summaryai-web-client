@@ -3,7 +3,7 @@
 
     width: 700px;
     max-height: 90vh;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     flex-direction: column;
     z-index: 999;
@@ -17,9 +17,9 @@
     backdrop-filter: blur(12px);
     color: #e7e7e7 !important;
 
-    opacity: 0;
+    /* opacity: 0;
     transform: scale(0.95) translateY(-20px);
-    animation: popInAnimation 0.5s ease-out forwards;
+    animation: popInAnimation 0.5s ease-out forwards; */
 }
 
 

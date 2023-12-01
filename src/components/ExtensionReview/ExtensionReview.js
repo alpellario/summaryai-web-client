@@ -3,21 +3,72 @@ import "./ExtensionReview.css";
 import { FaCircle } from "react-icons/fa";
 import { BiSolidSend } from "react-icons/bi";
 import FlagMenu from "../FlagMenu/FlagMenu";
+import { motion } from "framer-motion";
 
-const ExtensionReview = () => {
-  const [targetLanguage, setTargetLanguage] = useState("en");
-  const [page, setPage] = useState("options");
+const ExtensionReview = ({
+  handleTrigger,
+  displayMode,
+  onPage,
+  addData,
+  lan,
+  handleGather,
+  langSequence,
+}) => {
+  const [targetLanguage, setTargetLanguage] = useState(lan ? lan : "en");
+  const [page, setPage] = useState(onPage ? onPage : "options");
   const [streamedInput, setStreamedInput] = useState("");
   const [streamedTitle, setStreamedTitle] = useState("");
   const [streamedContent, setStreamedContent] = useState("");
   const [loading, setLoading] = useState(true);
   const [isScaled, setIsScaled] = useState(false);
   const [endAnimation, setEndAnimation] = useState(false);
+  const [bounce, setBounce] = useState(false);
 
   const [isHovered, setIsHovered] = useState(false);
   const [isActive, setIsActive] = useState(false);
 
-  function simulateStreamingSyllables(message, onMessageCallback, onComplete) {
+  function startLanguageOrder() {
+    console.log("am i here");
+    const languageOrder = [
+      "zh",
+      "de",
+      "fr",
+      "es",
+      "tr",
+      "ja",
+      "ko",
+      "pl",
+      "en",
+    ];
+    languageOrder.forEach((lang, index) => {
+      setTimeout(() => {
+        setIsScaled(true);
+        setBounce(true);
+        setTimeout(() => {
+          setIsScaled(false);
+          setBounce(false);
+          if (index === languageOrder.length - 1) {
+            setEndAnimation(true);
+          }
+        }, 500);
+        setTargetLanguage(lang);
+        setStreamedTitle(translatedData[lang].title);
+        setStreamedContent(translatedData[lang].content);
+      }, 800 * (index + 1));
+    });
+  }
+
+  useEffect(() => {
+    if (!langSequence) return;
+    startLanguageOrder();
+  }, [langSequence]);
+
+  function simulateStreamingSyllables(
+    message,
+    onMessageCallback,
+    onComplete,
+    gather
+  ) {
     const syllableLength = 3;
     let wordIndex = 0;
     let syllableIndex = 0;
@@ -56,80 +107,99 @@ const ExtensionReview = () => {
   }
 
   useEffect(() => {
-    setTimeout(
-      () => {
-        if (page === "options") {
-          const input = "What exactly does this extension do?";
-          simulateStreamingSyllables(
-            input,
-            (syllable) => {
-              setStreamedInput((prevInput) => prevInput + syllable);
-            },
-            () => {
-              setIsHovered(true);
-              setIsActive(true);
-              setTimeout(() => {
-                setIsHovered(false);
-                setIsActive(false);
-                setPage("text");
-              }, 1000);
-            }
-          );
-        } else if (page === "text") {
-          setTimeout(() => {
-            setLoading(false);
-            const title =
-              "Deepen Your Understanding, Access Information Instantly";
-            const content =
-              "Deep understanding and quick access while searching for information on the web is now just a click away. With SummaryAI, rapidly assimilate dense texts you encounter, directly from the page you are browsing, and transform them into meaningful and clear pieces of information. It simplifies even the most complex concepts, providing explanations clear enough for readers of all levels to easily grasp. Whether you are looking for a general summary or seeking in-depth knowledge with specific questions, SummaryAI personalizes and enriches your web experience. Transform your journey of knowledge discovery with SummaryAI and take the first step towards a more informed world. ";
+    if (displayMode) {
+      setLoading(false);
+
+      if (page === "text") {
+        setStreamedTitle(addData.title);
+        setStreamedContent(addData.content);
+        setTimeout(() => {
+          handleGather();
+        }, 5000);
+      }
+
+      //set title
+      //set content
+
+      //settimeout -> cordinatlari ekranin merkezine getir
+    } else {
+      setTimeout(
+        () => {
+          if (page === "options") {
+            const input = "What exactly does this extension do?";
             simulateStreamingSyllables(
-              title,
+              input,
               (syllable) => {
-                setStreamedTitle((prevTitle) => prevTitle + syllable);
+                setStreamedInput((prevInput) => prevInput + syllable);
               },
               () => {
-                simulateStreamingSyllables(
-                  content,
-                  (syllable) => {
-                    setStreamedContent((prevContent) => prevContent + syllable);
-                  },
-                  () => {
-                    const languageOrder = [
-                      "zh",
-                      "de",
-                      "fr",
-                      "es",
-                      "tr",
-                      "ja",
-                      "ko",
-                      "pl",
-                      "en",
-                    ];
-                    languageOrder.forEach((lang, index) => {
-                      setTimeout(() => {
-                        setIsScaled(true);
-
-                        setTimeout(() => {
-                          setIsScaled(false);
-                          if (index === languageOrder.length - 1) {
-                            setEndAnimation(true);
-                          }
-                        }, 500);
-
-                        setTargetLanguage(lang);
-                        setStreamedTitle(translatedData[lang].title);
-                        setStreamedContent(translatedData[lang].content);
-                      }, 2000 * (index + 1));
-                    });
-                  }
-                );
+                setIsHovered(true);
+                setIsActive(true);
+                setTimeout(() => {
+                  setIsHovered(false);
+                  setIsActive(false);
+                  setPage("text");
+                }, 1000);
               }
             );
-          }, 1000);
-        }
-      },
-      page === "options" ? 3000 : 1000
-    );
+          } else if (page === "text") {
+            setTimeout(() => {
+              setLoading(false);
+              if (handleTrigger) handleTrigger();
+
+              const title =
+                "Deepen Your Understanding, Access Information Instantly";
+              const content =
+                "Deep understanding and quick access while searching for information on the web is now just a click away. With SummaryAI, rapidly assimilate dense texts you encounter, directly from the page you are browsing, and transform them into meaningful and clear pieces of information. It simplifies even the most complex concepts, providing explanations clear enough for readers of all levels to easily grasp. Whether you are looking for a general summary or seeking in-depth knowledge with specific questions, SummaryAI personalizes and enriches your web experience. Transform your journey of knowledge discovery with SummaryAI and take the first step towards a more informed world. ";
+              simulateStreamingSyllables(
+                title,
+                (syllable) => {
+                  setStreamedTitle((prevTitle) => prevTitle + syllable);
+                },
+                () => {
+                  simulateStreamingSyllables(
+                    content,
+                    (syllable) => {
+                      setStreamedContent(
+                        (prevContent) => prevContent + syllable
+                      );
+                    },
+                    () => {
+                      // const languageOrder = [
+                      //   "zh",
+                      //   "de",
+                      //   "fr",
+                      //   "es",
+                      //   "tr",
+                      //   "ja",
+                      //   "ko",
+                      //   "pl",
+                      //   "en",
+                      // ];
+                      // languageOrder.forEach((lang, index) => {
+                      //   setTimeout(() => {
+                      //     setIsScaled(true);
+                      //     setTimeout(() => {
+                      //       setIsScaled(false);
+                      //       if (index === languageOrder.length - 1) {
+                      //         setEndAnimation(true);
+                      //       }
+                      //     }, 500);
+                      //     setTargetLanguage(lang);
+                      //     setStreamedTitle(translatedData[lang].title);
+                      //     setStreamedContent(translatedData[lang].content);
+                      //   }, 2000 * (index + 1));
+                      // });
+                    }
+                  );
+                }
+              );
+            }, 1000);
+          }
+        },
+        page === "options" ? 3000 : 1000
+      );
+    }
   }, [page]);
 
   function handleTranslate(lang) {
@@ -150,13 +220,24 @@ const ExtensionReview = () => {
           <div className="header-title">SummaryAI</div>
         </div>
         <div className="header-buttons">
-          <FlagMenu
-            targetLanguage={targetLanguage}
-            handleTranslate={handleTranslate}
-            page={page}
-            isScaled={isScaled}
-            endAnimation={endAnimation}
-          />
+          <motion.div
+            initial={{ scale: 1 }}
+            animate={{ scale: bounce ? 1.4 : 1 }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
+            }}
+          >
+            <FlagMenu
+              targetLanguage={targetLanguage}
+              handleTranslate={handleTranslate}
+              page={page}
+              // isScaled={isScaled}
+              // endAnimation={endAnimation}
+            />
+          </motion.div>
+
           {/* <img
             className={`language-img ${isScaled ? "scale" : ""}`}
             alt="Language"

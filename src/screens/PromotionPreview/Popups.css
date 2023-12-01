@@ -1,0 +1,51 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.popups_background {
+    background-color: #1D2B41;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: auto;
+
+
+}
+
+.popups_fullscreen_background_text_animation {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 35px;
+    position: absolute;
+    width: 150%;
+    height: auto;
+    top: -100%;
+    /* font-family: 'Roboto', sans-serif; */
+}
+
+@keyframes scrollText {
+    0% {
+        top: -100%;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+.popups_container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: visible;
+}
+
+.popups_container_extension_review {
+    position: absolute;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+    overflow: visible;
+}

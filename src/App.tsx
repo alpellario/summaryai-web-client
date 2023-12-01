@@ -18,6 +18,7 @@ import VerifyResetPassword from "./screens/VerifyResetPasswordScreen/VerifyReset
 import LandingPage from "./screens/LandingScreen/LandingScreen";
 import PromotionPreview from "./screens/PromotionPreview/PromotionPreview";
 import TextPage from './screens/PromotionPreview/TextPage'
+import Popups from "./screens/PromotionPreview/Popups";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Container, Stack } from "@mui/material";
@@ -39,7 +40,7 @@ const theme = createTheme({
 const HeaderWrapper = () => {
   const location = useLocation();
 
-  return location.pathname !== '/home' && location.pathname !== '/promotionpreview' && location.pathname !== '/promotiontext' ? <Header /> : null;
+  return location.pathname !== '/home' && location.pathname !== '/promotionpreview' && location.pathname !== '/promotiontext' && location.pathname !== '/popups' ? <Header /> : null;
 };
 
 const App = () => {
@@ -51,6 +52,7 @@ const App = () => {
           <Route path="/" element={<SignIn />} />
           <Route path="/promotionpreview" element={<PromotionPreview />} />
           <Route path="/promotiontext" element={<TextPage />} />
+          <Route path="/popups" element={<Popups />} />
           <Route path="/home" element={<LandingPage />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/myaccount" element={<MyAccount />} />
