@@ -22,6 +22,8 @@
     animation: popInAnimation 0.5s ease-out forwards;
 }
 
+
+
 .header-container-2 {
     font-family: 'Exo 2', sans-serif !important;
     display: flex;

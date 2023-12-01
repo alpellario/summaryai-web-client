@@ -42,6 +42,8 @@
     font-size: 30px;
 }
 
+
+
 .free-text {
     font-weight: bold;
     color: #4CAF50;
@@ -54,6 +56,8 @@
     font-weight: 600;
     margin-bottom: 20px;
 }
+
+
 
 .auth-button-container {
     display: flex;
@@ -163,6 +167,8 @@
     transform: rotate(20deg);
 
 }
+
+
 
 .footer {
     display: flex;
@@ -319,5 +325,68 @@
 
     50% {
         transform: scale(0.8);
+    }
+}
+
+
+
+@media only screen and (max-width: 1500px) {
+    .right-panel-header {
+        color: #fff;
+        font-size: 35px;
+        font-weight: 600;
+        margin-bottom: 20px;
+    }
+
+    .download-extension-button {
+        width: 220px;
+        height: 45px;
+        font-size: 16px;
+    }
+
+    .auth-button-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 600px;
+        margin-top: 40px;
+        margin-bottom: 60px;
+    }
+
+    .auth-button {
+        width: 220px;
+        height: 45px;
+        font-size: 16px;
+    }
+
+    .auth-button:not(:last-child) {
+        margin-right: 20px;
+    }
+
+    .landing-right-header {
+        font-size: 35px;
+        margin-bottom: 40px;
+
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .landing-container {
+        display: flex;
+        flex-direction: column;
+        height: auto;
+
+    }
+
+
+    .landing-left {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .landing-right {
+        width: 100vw;
+        height: 100vh;
     }
 }

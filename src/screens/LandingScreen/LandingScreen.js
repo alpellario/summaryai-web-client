@@ -48,15 +48,6 @@ const LandingScreen = () => {
   return (
     <div className="landing-container">
       <div className="landing-left">
-        <div className="logo-container">
-          <img
-            src={require("../../assets/images/logo-white.png")}
-            alt="Logo"
-            className="summaryai-logo"
-          />
-          <div className="summaryai-header-title">SummaryAI</div>
-        </div>
-
         <div className="landing-right-content">
           <h1 className="landing-right-header" ref={headerRef}>
             The best AI extension ever made
