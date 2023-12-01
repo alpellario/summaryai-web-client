@@ -13,7 +13,7 @@ const ResetPassword = () => {
   const { loading, withLoading } = useLoading();
 
   // state
-  const [email, setEmail] = useState<string>("furkanu48@gmail.com");
+  const [email, setEmail] = useState<string>("");
   const [error, setError] = useState<string>("");
 
   const onSend = () => {

@@ -4,7 +4,7 @@ import LogoImage from "../../assets/images/logo.png";
 
 import "./Header.css";
 import fonts from "../../styles/fonts";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import { ExitToApp } from "@mui/icons-material";
 import { LoadingButton } from "@mui/lab";
@@ -18,6 +18,7 @@ const Header = () => {
   const { loading, withLoading } = useLoading();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const location = useLocation();
 
   const onLogout = () => {
     withLoading(async () => {
@@ -30,33 +31,37 @@ const Header = () => {
         "*"
       );
       dispatch(clearUser());
-      navigate("/");
+      navigate("/signin");
     });
   };
 
   const onLogoClick = () => {
-    navigate(userData ? "/myaccount" : "/");
+    navigate(userData ? "/myaccount" : "/signin");
   };
 
+  console.log("location", location);
+
   return (
-    <div className="header">
-      <div onClick={onLogoClick} className="headerLink">
-        <img src={LogoImage} alt="Logo" className="logo" />
-        <span className="headerTitle">SummaryAI</span>
+    location.pathname !== "/" && (
+      <div className="header">
+        <div onClick={onLogoClick} className="headerLink">
+          <img src={LogoImage} alt="Logo" className="logo" />
+          <span className="headerTitle">SummaryAI</span>
+        </div>
+        <div className="contactUsRow">
+          <Link to="/contactus" className="contactUsText">
+            CONTACT US
+          </Link>
+          <LoadingButton
+            loading={loading}
+            style={{ width: 50, marginLeft: 10 }}
+            onClick={onLogout}
+          >
+            <ExitToApp color="primary" />
+          </LoadingButton>
+        </div>
       </div>
-      <div className="contactUsRow">
-        <Link to="/contactus" className="contactUsText">
-          CONTACT US
-        </Link>
-        <LoadingButton
-          loading={loading}
-          style={{ width: 50, marginLeft: 10 }}
-          onClick={onLogout}
-        >
-          <ExitToApp color="primary" />
-        </LoadingButton>
-      </div>
-    </div>
+    )
   );
 };
 

@@ -1,0 +1,9 @@
+.privacy-policy-content {
+  max-height: 50vh; /* Ekranın tam boyunu kullan */
+  width: 50%;
+  padding: 20px;
+  border-radius: 10px;
+  overflow-y: auto; /* İçerik uzunsa dikey kaydırma çubuğu göster */
+  line-height: 1.6; /* Satır aralığını ayarla */
+  background-color: #fff;
+}
