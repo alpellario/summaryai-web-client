@@ -165,31 +165,31 @@ const ExtensionReview = ({
                       );
                     },
                     () => {
-                      // const languageOrder = [
-                      //   "zh",
-                      //   "de",
-                      //   "fr",
-                      //   "es",
-                      //   "tr",
-                      //   "ja",
-                      //   "ko",
-                      //   "pl",
-                      //   "en",
-                      // ];
-                      // languageOrder.forEach((lang, index) => {
-                      //   setTimeout(() => {
-                      //     setIsScaled(true);
-                      //     setTimeout(() => {
-                      //       setIsScaled(false);
-                      //       if (index === languageOrder.length - 1) {
-                      //         setEndAnimation(true);
-                      //       }
-                      //     }, 500);
-                      //     setTargetLanguage(lang);
-                      //     setStreamedTitle(translatedData[lang].title);
-                      //     setStreamedContent(translatedData[lang].content);
-                      //   }, 2000 * (index + 1));
-                      // });
+                      const languageOrder = [
+                        "zh",
+                        "de",
+                        "fr",
+                        "es",
+                        "tr",
+                        "ja",
+                        "ko",
+                        "pl",
+                        "en",
+                      ];
+                      languageOrder.forEach((lang, index) => {
+                        setTimeout(() => {
+                          setIsScaled(true);
+                          setTimeout(() => {
+                            setIsScaled(false);
+                            if (index === languageOrder.length - 1) {
+                              setEndAnimation(true);
+                            }
+                          }, 500);
+                          setTargetLanguage(lang);
+                          setStreamedTitle(translatedData[lang].title);
+                          setStreamedContent(translatedData[lang].content);
+                        }, 2000 * (index + 1));
+                      });
                     }
                   );
                 }

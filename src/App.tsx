@@ -50,9 +50,9 @@ const App = () => {
       <HeaderWrapper />
         <Routes>
           <Route path="/" element={<SignIn />} />
-          <Route path="/promotionpreview" element={<PromotionPreview />} />
+          {/* <Route path="/promotionpreview" element={<PromotionPreview />} />
           <Route path="/promotiontext" element={<TextPage />} />
-          <Route path="/popups" element={<Popups />} />
+          <Route path="/popups" element={<Popups />} /> */}
           <Route path="/home" element={<LandingPage />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/myaccount" element={<MyAccount />} />
