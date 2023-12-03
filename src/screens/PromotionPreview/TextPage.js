@@ -24,12 +24,12 @@ const TextPage = () => {
         </div>
       )}
       <div className="add-content">
-        The global pandemic has been a watershed moment for the health sector,
-        initiating unprecedented challenges and sparking remarkable innovations.
-        As the world grapples with the aftermath of this health crisis, it's
-        crucial to examine the transformative changes in healthcare,
-        particularly focusing on innovations, treatment methods, and the
-        development of vaccines. The Onset of the Pandemic: A Catalyst for
+        LOL The global pandemic has been a watershed moment for the health
+        sector, initiating unprecedented challenges and sparking remarkable
+        innovations. As the world grapples with the aftermath of this health
+        crisis, it's crucial to examine the transformative changes in
+        healthcare, particularly focusing on innovations, treatment methods, and
+        the development of vaccines. The Onset of the Pandemic: A Catalyst for
         Change The initial phase of the pandemic laid bare the vulnerabilities
         of global health systems. Faced with a novel virus, healthcare
         professionals and scientists worldwide raced against time to understand
