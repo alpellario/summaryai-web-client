@@ -19,6 +19,7 @@ import VerifyResetPassword from "./screens/VerifyResetPasswordScreen/VerifyReset
 import PromotionPreview from "./screens/PromotionPreview/PromotionPreview";
 import TextPage from './screens/PromotionPreview/TextPage'
 import PrivacyPolicy from "./screens/PrivacyPolicyScreen/PrivacyPolicy";
+import Popups from "./screens/PromotionPreview/Popups";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Container, Stack } from "@mui/material";
