@@ -67,14 +67,14 @@ class ApiManager {
   static contactUs = ({
     email,
     contactType,
-    message
+    message,
   }: {
     email: string;
     contactType: "authorized" | "unauthorized";
     message?: string;
   }) => {
     const url = ENDPOINTS.POST_USER_CONTACT();
-    return ApiMethods.post(url, { email, contactType });
+    return ApiMethods.post(url, { email, contactType, message });
   };
 }
 
