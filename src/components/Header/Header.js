@@ -39,8 +39,6 @@ const Header = () => {
     navigate(userData ? "/myaccount" : "/signin");
   };
 
-  console.log("location", location);
-
   return (
     location.pathname !== "/" && (
       <div className="header">
@@ -52,13 +50,15 @@ const Header = () => {
           <Link to="/contactus" className="contactUsText">
             CONTACT US
           </Link>
-          <LoadingButton
-            loading={loading}
-            style={{ width: 50, marginLeft: 10 }}
-            onClick={onLogout}
-          >
-            <ExitToApp color="primary" />
-          </LoadingButton>
+          {userData && (
+            <LoadingButton
+              loading={loading}
+              style={{ width: 50, marginLeft: 10 }}
+              onClick={onLogout}
+            >
+              <ExitToApp color="primary" />
+            </LoadingButton>
+          )}
         </div>
       </div>
     )
