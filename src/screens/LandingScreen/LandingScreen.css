@@ -3,17 +3,20 @@
     flex-direction: row;
     width: 100vw;
     height: 100vh;
+    height: 100%;
+    overflow: hidden;
+
 }
 
 .landing-left {
     display: flex;
     flex-direction: column;
-
-     /* width: 60vw; */
-     width: 100vw;
-
+    width: 60vw;
     height: 100vh;
     background-color: #1d2b41;
+
+    display: relative;
+    overflow: hidden;
 }
 
 .landing-right {
@@ -21,11 +24,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    /* width: 40vw; */
-    display: none;
-    
+    width: 40vw;
+
     height: 100vh;
-    background-color: #000;
+    background-color: black;
+    z-index: 9999;
+
 }
 
 .logo-container {
@@ -44,6 +48,7 @@
 
 .summaryai-header-title {
     font-size: 30px;
+    color: #fff;
 }
 
 

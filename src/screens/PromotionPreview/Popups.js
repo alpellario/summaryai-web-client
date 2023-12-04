@@ -191,6 +191,7 @@ const Popups = () => {
   return (
     <div className="popups_background">
       <ScrollingText speed={speed} />
+
       <div className="popups_container">
         <div className="popups_container_extension_review">
           <motion.div
