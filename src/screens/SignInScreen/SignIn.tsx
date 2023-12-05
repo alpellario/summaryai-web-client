@@ -51,9 +51,8 @@ const SingIn = () => {
     withScreenLoading(async () => {
       const account = await ApiManager.getUserAccount();
       if (account.success) {
-        navigate("/myaccount", {
-          state: { extensionPath: extensionPath || "" },
-        });
+        navigate("/myaccount", 
+        );
       }
     });
   };
