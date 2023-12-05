@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import "./LandingScreen.css";
 import { useNavigate } from "react-router-dom";
 
-import Divider from "@mui/material/Divider";
 import { IoExtensionPuzzle } from "react-icons/io5";
 
 import ExtensionReview from "../../components/ExtensionReview/ExtensionReview";
@@ -14,6 +13,18 @@ const LandingScreen = () => {
   const [showLogo, setShowLogo] = useState(false);
   const [showExtensionReview, setShowExtensionReview] = useState(false);
   const [applyClickEffect, setApplyClickEffect] = useState(false);
+  const [extensionPath, setExtensionPath] = useState("");
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const extensionPathParam = queryParams.get("extensionPath");
+
+    if (extensionPathParam) {
+      setExtensionPath(extensionPathParam);
+    }
+  }, []);
+
+  console.log(extensionPath);
 
   useEffect(() => {
     const handleAnimationEnd = (event) => {
@@ -97,7 +108,11 @@ const LandingScreen = () => {
         <div className="auth-button-container">
           <div
             className="auth-button auth-button-login"
-            onClick={() => navigate("/signin")}
+            onClick={() =>
+              navigate("/signin", {
+                state: { extensionPath: extensionPath || "" },
+              })
+            }
           >
             <span className="auth-button-text">Login</span>
           </div>

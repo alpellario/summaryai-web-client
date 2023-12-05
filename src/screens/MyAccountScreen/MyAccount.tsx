@@ -7,7 +7,7 @@ import Pagination from "@mui/material/Pagination";
 import PropTypes from 'prop-types';
 
 import "./MyAccount.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "store";
 import List from "../../components/List/List";
@@ -16,8 +16,9 @@ import ApiManager from "../../api/ApiManager";
 import { LoadingButton } from "@mui/lab";
 import { setUser } from "../../store/slices/userSlice";
 
-const MyAccount = () => {
+const MyAccount = () => {  
   //redux
+  const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { loading, withLoading } = useLoading();
@@ -26,18 +27,32 @@ const MyAccount = () => {
 
   const { userData } = useSelector((state: RootState) => state.user);
 
-  // state
   const [value, setValue] = React.useState(0);
   const [isSendEmail, setIsSendEmail] = React.useState(false);
   const [history, setHistory] = useState<any[]>([]);
+  const [extensionPath, setExtensionPath] = useState<string>(location.state?.extensionPath || '');
 
   const onSummaryClick = (summary: UserSummaryHistory) => {
     console.log("summary", summary);
-    // navigate("/summarydetails", {
-    //   state: { summary },
-    // });
+
     navigate(`/summarydetails/${summary._id}`);
   };
+
+  useEffect(() => {
+    if(extensionPath){
+      console.log('Post message', extensionPath);
+
+      window.postMessage(
+        {
+          type: "SUMMARYAI_AUTHENTICATED",
+          lastTabId: extensionPath,
+        },
+        "*"
+      );
+    }
+  }, [])
+
+
 
   useEffect(() => {
     if (!userData) {
@@ -244,6 +259,7 @@ const MyAccount = () => {
           </TabPanel >
         </div>
       </div>
+      <div></div>
     </div>
   );
 };

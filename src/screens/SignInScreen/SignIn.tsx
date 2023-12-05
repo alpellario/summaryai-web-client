@@ -3,7 +3,7 @@ import { Alert, Button, TextField } from "@mui/material";
 import ApiManager from "../../api/ApiManager";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { RootState } from "store";
 import useLoading from "../../utils/hooks/useLoading";
 import "./SignIn.css";
@@ -11,13 +11,17 @@ import { setUser } from "../../store/slices/userSlice";
 import GoogleButton from "../../components/GoogleButton/GoogleButton";
 
 const SingIn = () => {
+  const location = useLocation();
+  const [extensionPath, setExtensionPath] = useState<string>(location.state?.extensionPath || '');
+  
+  console.log(extensionPath, 'extensionPath')
   // redux
   const { userData, token } = useSelector((state: RootState) => state.user);
-
   // hooks
   const { loading, withLoading } = useLoading();
   const { loading: screenLoading, withLoading: withScreenLoading } =
     useLoading();
+    // const [isExtensionRequest, setIsExtensionRequest] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,6 +31,18 @@ const SingIn = () => {
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
 
+
+
+  // useEffect(() => {
+  //   const params = new URLSearchParams(window.location.search);
+  //   const extensionRequest = params.get("extensionRequest");
+  //   if(extensionRequest){
+  //     setIsExtensionRequest(true);
+  //   }
+  // }, []);
+
+
+
   useEffect(() => {
     getUserAccount();
   }, []);
@@ -35,7 +51,9 @@ const SingIn = () => {
     withScreenLoading(async () => {
       const account = await ApiManager.getUserAccount();
       if (account.success) {
-        navigate("/myaccount");
+        navigate("/myaccount", {
+          state: { extensionPath: extensionPath || "" },
+        });
       }
     });
   };
@@ -51,16 +69,19 @@ const SingIn = () => {
         return setError(login.message);
       }
 
+      console.log("FE :", extensionPath);
       window.postMessage(
         {
           type: "SET_SUMMARYAI_SECRET_KEY",
           token: login.token,
+          lastTabId: extensionPath,
         },
         "*"
       );
 
       dispatch(setUser(login));
-      navigate("/myaccount");
+
+      navigate("/myaccount", {state: { extensionPath: extensionPath || "" }});
     });
   };
 
