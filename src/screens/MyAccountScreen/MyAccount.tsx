@@ -4,7 +4,7 @@ import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Pagination from "@mui/material/Pagination";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 import "./MyAccount.css";
 import { Link, useNavigate, useLocation } from "react-router-dom";
@@ -15,8 +15,9 @@ import useLoading from "../../utils/hooks/useLoading";
 import ApiManager from "../../api/ApiManager";
 import { LoadingButton } from "@mui/lab";
 import { setUser } from "../../store/slices/userSlice";
+import { PiCheckFatFill } from "react-icons/pi";
 
-const MyAccount = () => {  
+const MyAccount = () => {
   //redux
   const location = useLocation();
   const navigate = useNavigate();
@@ -30,7 +31,9 @@ const MyAccount = () => {
   const [value, setValue] = React.useState(0);
   const [isSendEmail, setIsSendEmail] = React.useState(false);
   const [history, setHistory] = useState<any[]>([]);
-  const [extensionPath, setExtensionPath] = useState<string>(location.state?.extensionPath || '');
+  const [extensionPath, setExtensionPath] = useState<string>(
+    location.state?.extensionPath || ""
+  );
 
   const onSummaryClick = (summary: UserSummaryHistory) => {
     console.log("summary", summary);
@@ -39,8 +42,8 @@ const MyAccount = () => {
   };
 
   useEffect(() => {
-    if(extensionPath){
-      console.log('Post message', extensionPath);
+    if (extensionPath) {
+      console.log("Post message", extensionPath);
 
       window.postMessage(
         {
@@ -50,9 +53,7 @@ const MyAccount = () => {
         "*"
       );
     }
-  }, [])
-
-
+  }, []);
 
   useEffect(() => {
     if (!userData) {
@@ -64,10 +65,9 @@ const MyAccount = () => {
   const getUserData = () => {
     withLoading(async () => {
       const userData = await ApiManager.getUserAccount();
-      console.log('userData', userData);
+      console.log("userData", userData);
 
       if (userData.success) {
-
         dispatch(setUser(userData));
       }
     });
@@ -144,7 +144,7 @@ const MyAccount = () => {
 
   function TabPanel(props: any) {
     const { children, value, index, ...other } = props;
-  
+
     return (
       <div
         role="tabpanel"
@@ -153,15 +153,11 @@ const MyAccount = () => {
         // aria-labelledby={`full-width-tab-${index}`}
         {...other}
       >
-        {value === index && (
-          <div className="history-list">
-            {children}
-          </div>
-        )}
+        {value === index && <div className="history-list">{children}</div>}
       </div>
     );
   }
-  
+
   TabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.number.isRequired,
@@ -177,15 +173,13 @@ const MyAccount = () => {
             alt="User Profile"
             className="userImage"
           /> */}
-          
-            <div className="userName">
-              Hello,
-              <div className="userNameBold">
-                {userData?.email.split("@")[0]}.
-              </div>
-            </div>
 
-            {/* <div className="userInformationRow">
+          <div className="userName">
+            Hello,
+            <div className="userNameBold">{userData?.email.split("@")[0]}.</div>
+          </div>
+
+          {/* <div className="userInformationRow">
               <span className="userCredits">
                 You have{" "}
                 <span style={{ fontWeight: 600, color: "#4e617e" }}>200</span>{" "}
@@ -193,18 +187,10 @@ const MyAccount = () => {
               </span>
               <button className="creditsButton">Get Credits</button>
             </div> */}
-          
         </div>
-        <div
-          className="tabLayoutContainer"
-        >
+        <div className="tabLayoutContainer">
           <div className="tabsContainer">
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              variant="fullWidth"
-              
-            >
+            <Tabs value={value} onChange={handleChange} variant="fullWidth">
               <Tab
                 style={{
                   fontFamily: "Exo 2",
@@ -216,18 +202,18 @@ const MyAccount = () => {
             </Tabs>
           </div>
 
-          <TabPanel  value={value} index={0}>
+          <TabPanel value={value} index={0}>
             {/* <div className="historyList"> */}
-              <List
-                data={history?.reverse()}
-                loading={loading}
-                renderItem={renderHistoryItem}
-              />
- 
-            {/* </div> */}
-          </TabPanel >
+            <List
+              data={history?.reverse()}
+              loading={loading}
+              renderItem={renderHistoryItem}
+            />
 
-          <TabPanel  value={value} index={1}>
+            {/* </div> */}
+          </TabPanel>
+
+          <TabPanel value={value} index={1}>
             <div className="settingsItem">
               <div className="settingsItemTitleContainer">
                 <span className="settingsItemTitle">Change Password</span>
@@ -255,11 +241,45 @@ const MyAccount = () => {
                 </LoadingButton>
               )}
             </div>
-            
-          </TabPanel >
+          </TabPanel>
         </div>
       </div>
       <div></div>
+      {extensionPath ? (
+        <div className="auth-overlay">
+          <div className="auth_success_container">
+            <div className="auth_header_container">
+              <PiCheckFatFill className="auth_icon" />
+              <div className="auth_header">Authorization successful</div>
+            </div>
+            <div className="auth_content">
+              You can start using SummaryAI by clicking on the icon that appears
+              after any text you select on a web page, or by selecting it from
+              the context menu that opens with a right-click on your mouse.
+            </div>
+            <div className="auth_images_container">
+              <img
+                alt="hint-1"
+                src={require("../../assets/images/hint-1.png")}
+              />
+              <img
+                alt="hint-2"
+                src={require("../../assets/images/hint-2.png")}
+              />
+            </div>
+            <div
+              className="auth_button"
+              onClick={() => {
+                setExtensionPath("");
+              }}
+            >
+              ALRIGHT
+            </div>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
