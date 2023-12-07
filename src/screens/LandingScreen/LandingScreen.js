@@ -118,7 +118,11 @@ const LandingScreen = () => {
           </div>
           <div
             className="auth-button auth-button-signup"
-            onClick={() => navigate("/signup")}
+            onClick={() =>
+              navigate("/signup", {
+                state: { extensionPath: extensionPath || "" },
+              })
+            }
           >
             <span className="auth-button-text">Signup</span>
           </div>
