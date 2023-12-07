@@ -38,11 +38,10 @@ const MyAccount = () => {
     !!location.state?.isAutoLogin
   );
 
-  console.log("Last Tab Id", lastTabId);
-
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     const extensionPathParam = queryParams.get("tabId");
+    console.log("Google Auth Extension Tab ID:", extensionPathParam);
 
     if (extensionPathParam) {
       setExtensionPath(extensionPathParam);
