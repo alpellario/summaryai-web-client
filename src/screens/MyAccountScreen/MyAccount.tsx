@@ -37,20 +37,6 @@ const MyAccount = () => {
   const [isAutoLogin, setIsAutoLogin] = useState<boolean>(
     !!location.state?.isAutoLogin
   );
-  const [isGoogleAuth, setIsGoogleAuth] = useState<boolean>(false);
-
-  useEffect(() => {
-    const queryParams = new URLSearchParams(window.location.search);
-    console.log("Google Auth URL:", window.location.search);
-    const extensionPathParam = queryParams.get("tabId");
-    console.log("Google Auth Extension Tab ID:", extensionPathParam);
-
-    if (extensionPathParam) {
-      setIsGoogleAuth(true);
-      setExtensionPath(extensionPathParam);
-      console.log("flag1");
-    }
-  }, []);
 
   const onSummaryClick = (summary: UserSummaryHistory) => {
     console.log("summary", summary);
@@ -87,21 +73,27 @@ const MyAccount = () => {
         dispatch(setUser(userData));
       }
 
-      console.log("flag2");
-      console.log("isGoogleAuth: ", isGoogleAuth);
-      if (userData?.user?.token && (isAutoLogin || isGoogleAuth)) {
+      console.log("flag1");
+
+      let isGoogleAuthTabId = false;
+      const queryParams = new URLSearchParams(window.location.search);
+      const extensionPathParam = queryParams.get("tabId");
+      console.log("extensionPathParam", extensionPathParam);
+      if (extensionPathParam) {
+        isGoogleAuthTabId = true;
+      }
+
+      if (userData?.user?.token && (isAutoLogin || isGoogleAuthTabId)) {
         console.log(userData.user.token);
         window.postMessage(
           {
             type: "SET_SUMMARYAI_SECRET_KEY",
             token: userData?.user?.token,
-            lastTabId: extensionPath,
+            lastTabId: isGoogleAuthTabId ? extensionPathParam : extensionPath,
           },
           "*"
         );
       }
-
-      if (extensionPath) console.log(extensionPath);
     });
   };
 
