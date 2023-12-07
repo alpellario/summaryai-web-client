@@ -26,7 +26,7 @@ const MyAccount = () => {
   const { loading: resetLinkLoading, withLoading: withResetLink } =
     useLoading();
 
-  const { userData } = useSelector((state: RootState) => state.user);
+  const { userData, lastTabId } = useSelector((state: RootState) => state.user);
 
   const [value, setValue] = React.useState(0);
   const [isSendEmail, setIsSendEmail] = React.useState(false);
@@ -34,6 +34,11 @@ const MyAccount = () => {
   const [extensionPath, setExtensionPath] = useState<string>(
     location.state?.extensionPath || ""
   );
+  const [isAutoLogin, setIsAutoLogin] = useState<boolean>(
+    !!location.state?.isAutoLogin
+  );
+
+  console.log("Last Tab Id", lastTabId);
 
   const onSummaryClick = (summary: UserSummaryHistory) => {
     console.log("summary", summary);
@@ -42,7 +47,7 @@ const MyAccount = () => {
   };
 
   useEffect(() => {
-    if (extensionPath) {
+    if (extensionPath && !isAutoLogin) {
       console.log("Post message", extensionPath);
 
       window.postMessage(
@@ -70,18 +75,16 @@ const MyAccount = () => {
         dispatch(setUser(userData));
       }
 
-      if (extensionPath) {
-        if (userData?.user?.token) {
-          console.log(userData.user.token);
-          window.postMessage(
-            {
-              type: "SET_SUMMARYAI_SECRET_KEY",
-              token: userData?.user?.token,
-              lastTabId: extensionPath,
-            },
-            "*"
-          );
-        }
+      if (userData?.user?.token && (isAutoLogin || lastTabId)) {
+        console.log(userData.user.token);
+        window.postMessage(
+          {
+            type: "SET_SUMMARYAI_SECRET_KEY",
+            token: userData?.user?.token,
+            lastTabId: extensionPath,
+          },
+          "*"
+        );
       }
     });
   };

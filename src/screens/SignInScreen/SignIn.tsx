@@ -12,16 +12,18 @@ import GoogleButton from "../../components/GoogleButton/GoogleButton";
 
 const SingIn = () => {
   const location = useLocation();
-  const [extensionPath, setExtensionPath] = useState<string>(location.state?.extensionPath || '');
-  
-  console.log(extensionPath, 'extensionPath')
+  const [extensionPath, setExtensionPath] = useState<string>(
+    location.state?.extensionPath || ""
+  );
+
+  console.log(extensionPath, "extensionPath");
   // redux
   const { userData, token } = useSelector((state: RootState) => state.user);
   // hooks
   const { loading, withLoading } = useLoading();
   const { loading: screenLoading, withLoading: withScreenLoading } =
     useLoading();
-    // const [isExtensionRequest, setIsExtensionRequest] = useState(false);
+  // const [isExtensionRequest, setIsExtensionRequest] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -31,8 +33,6 @@ const SingIn = () => {
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
 
-
-
   // useEffect(() => {
   //   const params = new URLSearchParams(window.location.search);
   //   const extensionRequest = params.get("extensionRequest");
@@ -40,8 +40,6 @@ const SingIn = () => {
   //     setIsExtensionRequest(true);
   //   }
   // }, []);
-
-
 
   useEffect(() => {
     getUserAccount();
@@ -51,8 +49,9 @@ const SingIn = () => {
     withScreenLoading(async () => {
       const account = await ApiManager.getUserAccount();
       if (account.success) {
-        navigate("/myaccount", 
-        );
+        navigate("/myaccount", {
+          state: { extensionPath: extensionPath || "", isAutoLogin: true },
+        });
       }
     });
   };
@@ -80,7 +79,9 @@ const SingIn = () => {
 
       dispatch(setUser(login));
 
-      navigate("/myaccount", {state: { extensionPath: extensionPath || "" }});
+      navigate("/myaccount", {
+        state: { extensionPath: extensionPath || "", isAutoLogin: false },
+      });
     });
   };
 
@@ -111,7 +112,7 @@ const SingIn = () => {
       <div className="content">
         {screenLoading ? null : (
           <>
-            <GoogleButton />
+            <GoogleButton tabId />
             <div style={{ marginTop: 10, marginBottom: 10 }}>OR</div>
             {error && (
               <Alert severity="error" style={{ width: "100%" }}>

@@ -12,6 +12,7 @@ type UserSliceState = {
   token: string | null;
   status: "idle" | "loading" | "succeeded" | "failed";
   error: any;
+  lastTabId: any;
 };
 
 const initialState: UserSliceState = {
@@ -19,6 +20,7 @@ const initialState: UserSliceState = {
   token: null,
   status: "idle",
   error: null,
+  lastTabId: null,
 };
 
 const userSlice = createSlice({
@@ -33,6 +35,9 @@ const userSlice = createSlice({
       state.userData = null;
       state.token = null;
     },
+    setLastTabId: (state, action) => {
+      state.lastTabId = action.payload.tabId;
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(fetchUserData.pending, (state) => {
@@ -51,7 +56,7 @@ const userSlice = createSlice({
   },
 });
 
-export const { setUser, clearUser } = userSlice.actions;
+export const { setUser, clearUser, setLastTabId } = userSlice.actions;
 
 export default userSlice.reducer;
 

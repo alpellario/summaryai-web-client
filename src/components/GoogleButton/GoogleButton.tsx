@@ -1,11 +1,17 @@
 import React from "react";
 import { Google } from "@mui/icons-material";
-import { FcGoogle } from 'react-icons/fc';
+import { FcGoogle } from "react-icons/fc";
+
+import { setLastTabId } from "../../store/slices/userSlice";
+import { useDispatch } from "react-redux";
 
 import "./GoogleButton.css";
 import { LoadingButton } from "@mui/lab";
-const GoogleButton = ({ text, customStyle, onClick }: any) => {
+const GoogleButton = ({ text, customStyle, onClick, tabId }: any) => {
+  const dispatch = useDispatch();
+
   const handleGoogleOAuth = () => {
+    dispatch(setLastTabId({ tabId: tabId ? tabId : "" }));
     window.location.href = "https://summaryai.io/auth/google";
   };
 
@@ -18,7 +24,7 @@ const GoogleButton = ({ text, customStyle, onClick }: any) => {
       <div className="google-logo-container">
         <FcGoogle className="google-logo" />
       </div>
-      
+
       <div style={styles.text}>Sign in with Google</div>
     </LoadingButton>
   );
