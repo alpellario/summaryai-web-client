@@ -112,7 +112,7 @@ const SingIn = () => {
       <div className="content">
         {screenLoading ? null : (
           <>
-            <GoogleButton tabId />
+            <GoogleButton tabId={extensionPath} />
             <div style={{ marginTop: 10, marginBottom: 10 }}>OR</div>
             {error && (
               <Alert severity="error" style={{ width: "100%" }}>

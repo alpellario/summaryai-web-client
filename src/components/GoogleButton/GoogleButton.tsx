@@ -2,17 +2,17 @@ import React from "react";
 import { Google } from "@mui/icons-material";
 import { FcGoogle } from "react-icons/fc";
 
-import { setLastTabId } from "../../store/slices/userSlice";
 import { useDispatch } from "react-redux";
+import { setLastTabId } from "../../store/slices/userSlice";
 
 import "./GoogleButton.css";
 import { LoadingButton } from "@mui/lab";
 const GoogleButton = ({ text, customStyle, onClick, tabId }: any) => {
   const dispatch = useDispatch();
-
   const handleGoogleOAuth = () => {
+    console.log("GOAUTH", tabId);
     dispatch(setLastTabId({ tabId: tabId ? tabId : "" }));
-    window.location.href = "https://summaryai.io/auth/google";
+    window.location.href = `https://summaryai.io/auth/google?tabId=${tabId}`;
   };
 
   return (

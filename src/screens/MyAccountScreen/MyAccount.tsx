@@ -40,6 +40,15 @@ const MyAccount = () => {
 
   console.log("Last Tab Id", lastTabId);
 
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const extensionPathParam = queryParams.get("extensionPath");
+
+    if (extensionPathParam) {
+      console.log("extensionPathParam on server", extensionPathParam);
+    }
+  }, []);
+
   const onSummaryClick = (summary: UserSummaryHistory) => {
     console.log("summary", summary);
 
