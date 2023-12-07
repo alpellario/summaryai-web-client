@@ -42,10 +42,10 @@ const MyAccount = () => {
 
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
-    const extensionPathParam = queryParams.get("extensionPath");
+    const extensionPathParam = queryParams.get("tabId");
 
     if (extensionPathParam) {
-      console.log("extensionPathParam on server", extensionPathParam);
+      setExtensionPath(extensionPathParam);
     }
   }, []);
 
@@ -95,6 +95,8 @@ const MyAccount = () => {
           "*"
         );
       }
+
+      if (extensionPath) console.log(extensionPath);
     });
   };
 
