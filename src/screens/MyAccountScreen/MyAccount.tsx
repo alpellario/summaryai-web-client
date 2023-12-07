@@ -65,10 +65,23 @@ const MyAccount = () => {
   const getUserData = () => {
     withLoading(async () => {
       const userData = await ApiManager.getUserAccount();
-      console.log("userData", userData);
 
       if (userData.success) {
         dispatch(setUser(userData));
+      }
+
+      if (extensionPath) {
+        if (userData?.user?.token) {
+          console.log(userData.user.token);
+          window.postMessage(
+            {
+              type: "SET_SUMMARYAI_SECRET_KEY",
+              token: userData?.user?.token,
+              lastTabId: extensionPath,
+            },
+            "*"
+          );
+        }
       }
     });
   };
