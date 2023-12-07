@@ -48,6 +48,7 @@ const MyAccount = () => {
     if (extensionPathParam) {
       setIsGoogleAuth(true);
       setExtensionPath(extensionPathParam);
+      console.log("flag1");
     }
   }, []);
 
@@ -86,6 +87,7 @@ const MyAccount = () => {
         dispatch(setUser(userData));
       }
 
+      console.log("flag2");
       if (userData?.user?.token && (isAutoLogin || isGoogleAuth)) {
         console.log(userData.user.token);
         window.postMessage(
