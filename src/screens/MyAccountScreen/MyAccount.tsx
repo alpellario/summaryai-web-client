@@ -26,7 +26,7 @@ const MyAccount = () => {
   const { loading: resetLinkLoading, withLoading: withResetLink } =
     useLoading();
 
-  const { userData, lastTabId } = useSelector((state: RootState) => state.user);
+  const { userData } = useSelector((state: RootState) => state.user);
 
   const [value, setValue] = React.useState(0);
   const [isSendEmail, setIsSendEmail] = React.useState(false);
@@ -37,6 +37,7 @@ const MyAccount = () => {
   const [isAutoLogin, setIsAutoLogin] = useState<boolean>(
     !!location.state?.isAutoLogin
   );
+  const [isGoogleAuth, setIsGoogleAuth] = useState<boolean>(false);
 
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
@@ -45,6 +46,7 @@ const MyAccount = () => {
     console.log("Google Auth Extension Tab ID:", extensionPathParam);
 
     if (extensionPathParam) {
+      setIsGoogleAuth(true);
       setExtensionPath(extensionPathParam);
     }
   }, []);
@@ -84,7 +86,7 @@ const MyAccount = () => {
         dispatch(setUser(userData));
       }
 
-      if (userData?.user?.token && (isAutoLogin || lastTabId)) {
+      if (userData?.user?.token && (isAutoLogin || isGoogleAuth)) {
         console.log(userData.user.token);
         window.postMessage(
           {
