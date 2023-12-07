@@ -88,6 +88,7 @@ const MyAccount = () => {
       }
 
       console.log("flag2");
+      console.log("isGoogleAuth: ", isGoogleAuth);
       if (userData?.user?.token && (isAutoLogin || isGoogleAuth)) {
         console.log(userData.user.token);
         window.postMessage(
