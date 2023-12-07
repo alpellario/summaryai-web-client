@@ -40,6 +40,7 @@ const MyAccount = () => {
 
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
+    console.log("Google Auth URL:", window.location.search);
     const extensionPathParam = queryParams.get("tabId");
     console.log("Google Auth Extension Tab ID:", extensionPathParam);
 
