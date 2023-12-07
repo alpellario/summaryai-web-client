@@ -16,6 +16,7 @@ const SignUp = () => {
     location.state?.extensionPath || ""
   );
 
+  console.log("extensionPath", extensionPath);
   // redux
   const { userData, token } = useSelector((state: RootState) => state.user);
 
@@ -41,6 +42,16 @@ const SignUp = () => {
       if (!signup.success) {
         return setError(signup.message);
       }
+
+      console.log("FE :", extensionPath);
+      window.postMessage(
+        {
+          type: "SET_SUMMARYAI_SECRET_KEY",
+          token: signup.token,
+          lastTabId: extensionPath,
+        },
+        "*"
+      );
 
       dispatch(setUser(signup));
       navigate("/myaccount", {
