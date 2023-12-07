@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./SignUp.css";
 
 import { TextField, Button, Alert } from "@mui/material";
@@ -11,6 +11,11 @@ import { RootState } from "../../store";
 import { setUser } from "../../store/slices/userSlice";
 
 const SignUp = () => {
+  const location = useLocation();
+  const [extensionPath, setExtensionPath] = useState<string>(
+    location.state?.extensionPath || ""
+  );
+
   // redux
   const { userData, token } = useSelector((state: RootState) => state.user);
 
@@ -38,7 +43,9 @@ const SignUp = () => {
       }
 
       dispatch(setUser(signup));
-      navigate("/myaccount");
+      navigate("/myaccount", {
+        state: { extensionPath: extensionPath || "", isAutoLogin: false },
+      });
     });
   };
 
@@ -118,10 +125,9 @@ const SignUp = () => {
           By creating your account, you agree to our
           <br />
           <Link to="/privacypolicy">Privacy Policy</Link>.
-
           <div className="signUpPrompt">
-          Already have an account? <Link to="/">Sign In</Link>
-            </div>
+            Already have an account? <Link to="/">Sign In</Link>
+          </div>
         </div>
       </div>
     </div>

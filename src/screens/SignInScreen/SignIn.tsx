@@ -33,14 +33,6 @@ const SingIn = () => {
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
 
-  // useEffect(() => {
-  //   const params = new URLSearchParams(window.location.search);
-  //   const extensionRequest = params.get("extensionRequest");
-  //   if(extensionRequest){
-  //     setIsExtensionRequest(true);
-  //   }
-  // }, []);
-
   useEffect(() => {
     getUserAccount();
   }, []);
