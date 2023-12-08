@@ -6,10 +6,13 @@
 
 const ENDPOINTS = {
   // Auth
+  GET_VERIFY_EMAIL: (token: string) => `/auth/verifyEmail/${token}`,
+  POST_RESENT_VERIFY_EMAIL: () => "/auth/resentVerifyEmail",
   POST_LOGIN: () => "/auth/login",
   POST_SIGUP: () => "/auth/signup",
   POST_LOGOUT: () => "/auth/logout",
   POST_FORGOT_PASSWORD: () => "/auth/forgotPassword",
+  POST_VERIFY_FORGOT_PASSWORD_TOKEN: (token: string) => `/auth/verifyForgotPasswordToken/${token}`,	
   POST_RESET_PASSWORD: (token: string) => `/auth/resetPassword/${token}`,
 
   // User

@@ -1,0 +1,37 @@
+.result {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-icon {
+    font-size: 30px;
+    margin: 20px 0;
+}
+
+.result-icon-error {
+    color: #f44336 !important;
+}
+
+.result-icon-success {
+    color: #4caf50 !important;
+}
+
+.result-title-error {
+    color: #f44336 !important;
+    font-size: 25px !important;
+    margin-left: 2px;
+}
+
+.result-title-success {
+    color: #4caf50 !important;
+    font-size: 25px !important;
+    margin-left: 2px;
+}
+
+.verify-result-text {
+    text-align: justify !important;
+    color: #000000 !important;
+    font-size: 20px !important;
+
+}

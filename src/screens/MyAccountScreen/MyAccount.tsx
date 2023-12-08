@@ -17,6 +17,16 @@ import { LoadingButton } from "@mui/lab";
 import { setUser } from "../../store/slices/userSlice";
 import { PiCheckFatFill } from "react-icons/pi";
 
+import { Alert } from "@mui/material";
+import MuiAlert, { AlertProps } from "@mui/material/Alert";
+import Snackbar from "@mui/material/Snackbar";
+
+const BottomAlert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 const MyAccount = () => {
   //redux
   const location = useLocation();
@@ -38,6 +48,12 @@ const MyAccount = () => {
     !!location.state?.isAutoLogin
   );
 
+  const [snackOpen, setSnackOpen] = useState(false);
+  const [error, setError] = useState<string>("");
+  const [snackType, setSnackType] = useState<"success" | "error">("success");
+  const [isEmailVerified, setIsEmailVerified] = useState<boolean>(true);
+  const [isMailSended, setIsMailSended] = useState<boolean>(false);
+
   const onSummaryClick = (summary: UserSummaryHistory) => {
     console.log("summary", summary);
 
@@ -46,8 +62,6 @@ const MyAccount = () => {
 
   useEffect(() => {
     if (extensionPath && !isAutoLogin) {
-      console.log("Post message", extensionPath);
-
       window.postMessage(
         {
           type: "SUMMARYAI_AUTHENTICATED",
@@ -93,6 +107,11 @@ const MyAccount = () => {
           },
           "*"
         );
+      }
+
+      console.log(userData);
+      if (!userData?.user?.emailVerified) {
+        setIsEmailVerified(false);
       }
     });
   };
@@ -163,6 +182,12 @@ const MyAccount = () => {
       if (forgotPassword.success) {
         setIsSendEmail(true);
       }
+
+      if (forgotPassword.error) {
+        setError(forgotPassword.message);
+        setSnackType("error");
+        setSnackOpen(true);
+      }
     });
   };
 
@@ -188,8 +213,64 @@ const MyAccount = () => {
     value: PropTypes.number.isRequired,
   };
 
+  const handleSnackClick = () => {
+    setSnackOpen(true);
+  };
+
+  const handleSnackClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setSnackOpen(false);
+  };
+
+  const handlerResentConfirmEmail = (email: string) => {
+    withLoading(async () => {
+      const resentVerifyEmail = await ApiManager.resentVerifyEmail({
+        email: email,
+      });
+
+      if (resentVerifyEmail.success) {
+        setIsMailSended(true);
+      }
+    });
+  };
+
+  const checkEmailVerification = () => {
+    if (isMailSended) return true;
+    else
+      return (
+        <div
+          className={`email-verify-warning ${
+            isEmailVerified ? "email-verify-hide" : "email-verify-show"
+          } `}
+        >
+          <Alert severity="error" style={{ width: "100%" }}>
+            Please verify your email address.{" "}
+            <Link
+              to=""
+              onClick={(e) => {
+                e.preventDefault();
+                if (userData?.email) {
+                  handlerResentConfirmEmail(userData.email);
+                }
+              }}
+            >
+              Click here
+            </Link>{" "}
+            to resend verification email.
+          </Alert>
+        </div>
+      );
+  };
+
   return (
-    <div className="container">
+    <div className="container myAccountContainer">
+      {checkEmailVerification()}
       <div className="myAccountContent">
         <div className="userInfo">
           {/* <img
@@ -304,6 +385,35 @@ const MyAccount = () => {
       ) : (
         ""
       )}
+      <Snackbar
+        open={snackOpen}
+        autoHideDuration={6000}
+        onClose={handleSnackClick}
+      >
+        <BottomAlert
+          onClose={handleSnackClose}
+          severity={snackType}
+          sx={{
+            width: "40%",
+            "& .MuiAlert-icon": {
+              fontSize: "25px",
+              flexShrink: 0,
+            },
+            "& .MuiAlert-message": {
+              fontSize: "16px",
+            },
+            "& .MuiAlert-action": {
+              "& button": {
+                flexShrink: 0,
+                width: "100%",
+                marginRight: "20px",
+              },
+            },
+          }}
+        >
+          {error ? error : "message"}
+        </BottomAlert>
+      </Snackbar>
     </div>
   );
 };

@@ -2,8 +2,9 @@ import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import store from "../store";
 import { clearUser } from "../store/slices/userSlice";
 
-// const baseURL = "http://localhost:3001";
-const baseURL = "https://summaryai.io";
+
+const baseURL = process.env.REACT_APP_ENV === 'production' ? "https://summaryai.io" : 'http://localhost:3001';
+
 
 // header
 const headers = {

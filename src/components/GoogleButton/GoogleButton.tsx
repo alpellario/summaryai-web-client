@@ -19,7 +19,10 @@ const GoogleButton = ({
   const handleGoogleOAuth = () => {
     console.log("GOAUTH", tabId);
     dispatch(setLastTabId({ tabId: tabId ? tabId : "" }));
-    window.location.href = `https://summaryai.io/auth/google?tabId=${tabId}`;
+    window.location.href =
+      process.env.REACT_APP_ENV === "production"
+        ? `https://summaryai.io/auth/google?tabId=${tabId}`
+        : `http://localhost:3001/auth/google?tabId=${tabId}`;
   };
 
   return (

@@ -38,6 +38,22 @@ class ApiManager {
     const url = ENDPOINTS.POST_FORGOT_PASSWORD();
     return ApiMethods.post(url, { email });
   };
+
+  static verifyResetPasswordToken = ({ token }: { token: string }) => {
+    const url = ENDPOINTS.POST_VERIFY_FORGOT_PASSWORD_TOKEN(token);
+    return ApiMethods.post(url);
+  };
+
+  static verifyEmail = ({ token }: { token: string }) => {
+    const url = ENDPOINTS.GET_VERIFY_EMAIL(token);
+    return ApiMethods.get(url);
+  };
+
+  static resentVerifyEmail = ({ email }: { email: string }) => {
+    const url = ENDPOINTS.POST_RESENT_VERIFY_EMAIL();
+    return ApiMethods.post(url, { email });
+  };
+
   static resetPassword = ({
     password,
     passwordConfirm,

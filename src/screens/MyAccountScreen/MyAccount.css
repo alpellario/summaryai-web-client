@@ -287,3 +287,22 @@
   }
 
 }
+
+.myAccountContainer {
+  position: relative;
+}
+
+.email-verify-warning {
+  position: absolute;
+  top: 30px;
+
+  max-width: 70%;
+}
+
+.email-verify-show {
+  display: block !important;
+}
+
+.email-verify-hide {
+  display: none !important;
+}

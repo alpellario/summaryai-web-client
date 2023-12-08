@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useLocation,
+} from "react-router-dom";
 
 // import HomePage from "./pages/HomePage";
 // import AccountPage from "./pages/AccountPage";
@@ -17,9 +23,10 @@ import SummaryDetails from "./screens/SummaryDetails/SummaryDetails";
 import ContactUs from "./screens/ContactUsScreen/ContactUs";
 import VerifyResetPassword from "./screens/VerifyResetPasswordScreen/VerifyResetPassword";
 import PromotionPreview from "./screens/PromotionPreview/PromotionPreview";
-import TextPage from './screens/PromotionPreview/TextPage'
+import TextPage from "./screens/PromotionPreview/TextPage";
 import PrivacyPolicy from "./screens/PrivacyPolicyScreen/PrivacyPolicy";
 import Popups from "./screens/PromotionPreview/Popups";
+import VerifyEmail from "./screens/VerifyEmailScreen/VerifyEmail";
 
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Container, Stack } from "@mui/material";
@@ -41,14 +48,18 @@ const theme = createTheme({
 const HeaderWrapper = () => {
   const location = useLocation();
 
-  return location.pathname !== '/home' && location.pathname !== '/promotionpreview' && location.pathname !== '/promotiontext' ? <Header /> : null;
+  return location.pathname !== "/home" &&
+    location.pathname !== "/promotionpreview" &&
+    location.pathname !== "/promotiontext" ? (
+    <Header />
+  ) : null;
 };
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-      <HeaderWrapper />
+        <HeaderWrapper />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/promotionpreview" element={<PromotionPreview />} />
@@ -62,6 +73,7 @@ const App = () => {
             element={<VerifyResetPassword />}
           />
           <Route path="/checkemail" element={<CheckEmail />} />
+          <Route path="/verifyEmail/:token" element={<VerifyEmail />} />
           <Route
             path="/summarydetails/:summaryId"
             element={<SummaryDetails />}

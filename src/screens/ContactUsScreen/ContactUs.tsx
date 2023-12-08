@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { LoadingButton } from "@mui/lab";
 import useLoading from "../../utils/hooks/useLoading";
 import { RootState } from "store";
 
 import "./ContactUs.css";
 import { Alert, TextField } from "@mui/material";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ApiManager from "../../api/ApiManager";
 
+import { setUser } from "../../store/slices/userSlice";
+
 const ContactUs = () => {
+  const dispatch = useDispatch();
   // redux
   const { userData, token } = useSelector((state: RootState) => state.user);
 
@@ -20,10 +23,29 @@ const ContactUs = () => {
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
 
+  console.log("userData", userData);
+
+  useEffect(() => {
+    if (!userData) {
+      getUserData();
+    }
+  }, []);
+
+  const getUserData = () => {
+    withLoading(async () => {
+      const userData = await ApiManager.getUserAccount();
+
+      if (userData.success) {
+        dispatch(setUser(userData));
+      }
+    });
+  };
+
   const onSubmit = () => {
+    console.log(email, message);
     withLoading(async () => {
       const contactUs = await ApiManager.contactUs({
-        email,
+        email: email,
         contactType: userData ? "authorized" : "unauthorized",
         message,
       });
