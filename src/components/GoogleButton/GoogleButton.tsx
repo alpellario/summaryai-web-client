@@ -7,7 +7,13 @@ import { setLastTabId } from "../../store/slices/userSlice";
 
 import "./GoogleButton.css";
 import { LoadingButton } from "@mui/lab";
-const GoogleButton = ({ text, customStyle, onClick, tabId }: any) => {
+const GoogleButton = ({
+  text,
+  customStyle,
+  onClick,
+  tabId,
+  buttonTextTitle,
+}: any) => {
   const dispatch = useDispatch();
 
   const handleGoogleOAuth = () => {
@@ -26,7 +32,7 @@ const GoogleButton = ({ text, customStyle, onClick, tabId }: any) => {
         <FcGoogle className="google-logo" />
       </div>
 
-      <div style={styles.text}>Sign in with Google</div>
+      <div style={styles.text}>{buttonTextTitle} with Google</div>
     </LoadingButton>
   );
 };

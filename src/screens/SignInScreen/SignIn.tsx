@@ -104,7 +104,7 @@ const SingIn = () => {
       <div className="content">
         {screenLoading ? null : (
           <>
-            <GoogleButton tabId={extensionPath} />
+            <GoogleButton tabId={extensionPath} buttonTextTitle="Sign in" />
             <div style={{ marginTop: 10, marginBottom: 10 }}>OR</div>
             {error && (
               <Alert severity="error" style={{ width: "100%" }}>

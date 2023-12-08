@@ -9,6 +9,7 @@ import useLoading from "../../utils/hooks/useLoading";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { setUser } from "../../store/slices/userSlice";
+import GoogleButton from "../../components/GoogleButton/GoogleButton";
 
 const SignUp = () => {
   const location = useLocation();
@@ -92,6 +93,8 @@ const SignUp = () => {
   return (
     <div className="container">
       <div className="content">
+        <GoogleButton tabId={extensionPath} buttonTextTitle="Sign up" />
+        <div style={{ marginTop: 10, marginBottom: 20 }}>OR</div>
         {error && (
           <Alert severity="error" style={{ width: "100%" }}>
             {error}
@@ -137,7 +140,7 @@ const SignUp = () => {
           <br />
           <Link to="/privacypolicy">Privacy Policy</Link>.
           <div className="signUpPrompt">
-            Already have an account? <Link to="/">Sign In</Link>
+            Already have an account? <Link to="/signin">Sign In</Link>
           </div>
         </div>
       </div>
