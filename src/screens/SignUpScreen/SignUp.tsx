@@ -94,7 +94,9 @@ const SignUp = () => {
     <div className="container">
       <div className="content">
         <GoogleButton tabId={extensionPath} buttonTextTitle="Sign up" />
-        <div style={{ marginTop: 10, marginBottom: 20 }}>OR</div>
+        <div style={{ marginTop: 10, marginBottom: 20, fontSize: "1.3rem" }}>
+          OR
+        </div>
         {error && (
           <Alert severity="error" style={{ width: "100%" }}>
             {error}

@@ -9,22 +9,22 @@ import { useDispatch } from "react-redux";
 const muiInputStyles = {
   inputLabelProps: {
     style: {
-      fontSize: "17px",
+      fontSize: "1.7rem",
       fontFamily: `'Lato', sans-serif`,
     },
   },
   inputProps: {
     style: {
       backgroundColor: "#E0F6F8",
-      fontSize: "20px",
+      fontSize: "2rem",
     },
   },
   buttonStyle: {
     backgroundColor: "#90CAFA",
     color: "#000000",
-    marginBottom: "12px",
-    height: "42px",
-    fontSize: "17px",
+    marginBottom: "1.2rem",
+    height: "4.2rem",
+    fontSize: "1.7rem",
   },
 };
 

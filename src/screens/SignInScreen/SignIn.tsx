@@ -105,7 +105,11 @@ const SingIn = () => {
         {screenLoading ? null : (
           <>
             <GoogleButton tabId={extensionPath} buttonTextTitle="Sign in" />
-            <div style={{ marginTop: 10, marginBottom: 10 }}>OR</div>
+            <div
+              style={{ marginTop: 10, marginBottom: 10, fontSize: "1.3rem" }}
+            >
+              OR
+            </div>
             {error && (
               <Alert severity="error" style={{ width: "100%" }}>
                 {error}
@@ -157,6 +161,7 @@ const styles = {
   },
   input: {
     marginTop: 10,
+    // fontSize: "3rem",
   },
   forgotPassword: {},
 };

@@ -112,17 +112,17 @@ const VerifyResetPassword = (props: any) => {
             sx={{
               width: "100%",
               "& .MuiAlert-icon": {
-                fontSize: "25px",
+                fontSize: "2.5rem",
                 flexShrink: 0,
               },
               "& .MuiAlert-message": {
-                fontSize: "16px",
+                fontSize: "1.6rem",
               },
               "& .MuiAlert-action": {
                 "& button": {
                   flexShrink: 0,
                   width: "100%",
-                  marginRight: "20px",
+                  marginRight: "2rem",
                 },
               },
             }}

@@ -1,5 +1,5 @@
 import React from "react";
-import "./List.css";  
+import "./List.css";
 import ClipLoader from "react-spinners/ClipLoader";
 
 type ListProps = {
@@ -14,10 +14,9 @@ const List = ({ data, renderItem, loading }: ListProps) => {
   }
 
   if (data === null || data === undefined) {
-    return null; 
+    return null;
   }
 
-  
   return (
     <div className="scrollableList">
       {data?.map((item: any) => renderItem(item))}

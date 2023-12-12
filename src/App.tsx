@@ -42,6 +42,7 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: ["Exo 2"].join(","),
+    fontSize: 16 * 1.3,
   },
 });
 

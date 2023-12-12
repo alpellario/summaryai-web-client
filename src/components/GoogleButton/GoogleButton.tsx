@@ -56,6 +56,7 @@ const styles = {
 
   text: {
     marginLeft: 20,
+    fontSize: "1.4rem",
   },
 };
 

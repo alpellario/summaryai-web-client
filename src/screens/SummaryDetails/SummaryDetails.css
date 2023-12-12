@@ -3,7 +3,7 @@
   flex-direction: column;
   background-color: #f9f9f9;
   border-radius: 5px;
-  padding: 40px;
+  padding: 4rem;
   width: 60%;
 
 }
@@ -21,10 +21,10 @@
 }
 
 .back-icon {
-  width: 20px;
-  height: 20px;
+  width: 2rem;
+  height: 2rem;
   fill: #4e617e;
-  margin-bottom: -1.5px;
+  margin-bottom: -.15rem;
 }
 
 .back-container:hover {
@@ -33,35 +33,35 @@
 
 .summaryDetailsTitle {
   flex: 1;
-  margin-right: 20px;
-  margin-left: 5px;
-  font-size: 25px;
+  margin-right: 2rem;
+  margin-left: .5rem;
+  font-size: 2.5rem;
   color: #4e617e;
   font-weight: 500;
 }
 
 .summaryDetailsDate {
-  font-size: 16px;
+  font-size: 1.6rem;
   color: #000;
   font-weight: 200;
 }
 
 .summaryDetailsText {
-  font-size: 16px;
+  font-size: 1.6rem;
   color: #000;
   font-weight: 300;
-  margin-top: 20px;
-  height: 400px;
+  margin-top: 2rem;
+  height: 40rem;
   overflow-y: auto;
   line-height: 1.5;
   text-align: justify;
-  padding-right: 5px;
+  padding-right: .5rem;
 
 }
 
 
 .summaryDetailsText::-webkit-scrollbar {
-  width: 10px;
+  width: 1rem;
   /* Scrollbar genişliği */
 }
 

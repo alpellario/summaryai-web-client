@@ -334,9 +334,9 @@ const MyAccount = () => {
                 <LoadingButton
                   variant="contained"
                   style={{
-                    width: "200px",
-                    fontSize: "12px",
-                    height: "40px",
+                    width: "20rem",
+                    fontSize: "1.2rem",
+                    height: "4rem",
                     marginTop: 0,
                   }}
                   loading={resetLinkLoading}
@@ -396,17 +396,17 @@ const MyAccount = () => {
           sx={{
             width: "40%",
             "& .MuiAlert-icon": {
-              fontSize: "25px",
+              fontSize: "2.5rem",
               flexShrink: 0,
             },
             "& .MuiAlert-message": {
-              fontSize: "16px",
+              fontSize: "1.6rem",
             },
             "& .MuiAlert-action": {
               "& button": {
                 flexShrink: 0,
                 width: "100%",
-                marginRight: "20px",
+                marginRight: "2rem",
               },
             },
           }}

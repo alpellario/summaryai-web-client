@@ -1,6 +1,6 @@
 .google-container {
   background-color: #4285f4;
-  height: 50px;
+  height: 5rem;
   border-radius: 1px;
   font-size: 1.6rem;
   cursor: pointer;
@@ -17,7 +17,7 @@
 }
 
 .google-logo {
-  font-size: 40px;
+  font-size: 4rem;
 
 }
 

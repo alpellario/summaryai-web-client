@@ -3,7 +3,7 @@
   color: #4e617e;
   /* Görseldeki renk */
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 1rem;
 }
 
 .forgotPassword a {
@@ -14,8 +14,8 @@
 
 .signUpPrompt {
   text-align: center;
-  margin-top: 20px;
-  font-size: 16px;
+  margin-top: 2rem;
+  font-size: 1.6rem;
 }
 
 .signUpPrompt a {
