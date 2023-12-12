@@ -57,9 +57,16 @@ const LandingScreen = () => {
     };
   }, []);
 
+  const handleGetExtension = () => {
+    window.open(
+      "https://chromewebstore.google.com/u/2/detail/summaryai/kkkjcbipmodpadpfflfjmleiibkalfik",
+      "_blank"
+    );
+  };
+
   return (
     <div className="landing-container">
-      <div className="landing-left">
+      <div className="landing-right">
         {/* <ScrollingText speed="3" /> */}
         <div className="logo-container">
           <img
@@ -91,10 +98,10 @@ const LandingScreen = () => {
           {showExtensionReview && <ExtensionReview />}
         </div>
       </div>
-      <div className="landing-right">
+      <div className="landing-left">
         <div className="right-panel-header">GET STARTED</div>
 
-        <div className="download-extension-button">
+        <div className="download-extension-button" onClick={handleGetExtension}>
           <IoExtensionPuzzle className="download-extension-icon" />
           <span>Get Extension</span>
         </div>

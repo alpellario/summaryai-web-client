@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    font-family: 'Exo 2', sans-serif !important;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 10px;
+}
+
+@media only screen and (max-width: 1500px) {
+    html {
+        font-size: 9px;
+    }
+}
+
+@media only screen and (max-width: 1350px) {
+    html {
+        font-size: 8px;
+    }
+}

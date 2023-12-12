@@ -5,10 +5,10 @@
     height: 100vh;
     height: 100%;
     overflow: hidden;
-
+    min-width: 333px;
 }
 
-.landing-left {
+.landing-right {
     display: flex;
     flex-direction: column;
     width: 60vw;
@@ -19,7 +19,7 @@
     overflow: hidden;
 }
 
-.landing-right {
+.landing-left {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,6 +30,7 @@
     background-color: black;
     z-index: 9999;
 
+    position: relative;
 }
 
 .logo-container {
@@ -37,17 +38,17 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    margin: 10px 0 0 5px;
+    margin: 1rem 0 0 .5rem;
     position: absolute;
 }
 
 .summaryai-logo {
-    width: 70px;
-    height: 70px;
+    width: 7rem;
+    height: 7rem;
 }
 
 .summaryai-header-title {
-    font-size: 30px;
+    font-size: 3rem;
     color: #fff;
 }
 
@@ -56,14 +57,14 @@
 .free-text {
     font-weight: bold;
     color: #4CAF50;
-    margin-left: 10px;
+    margin-left: 1rem;
 }
 
 .right-panel-header {
     color: #fff;
-    font-size: 40px;
+    font-size: 4rem;
     font-weight: 600;
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
 }
 
 
@@ -73,17 +74,17 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    width: 600px;
-    margin-top: 40px;
-    margin-bottom: 60px;
+    width: 60rem;
+    margin-top: 4rem;
+    margin-bottom: 6rem;
 }
 
 .auth-button {
-    width: 250px;
-    height: 50px;
-    border-radius: 5px;
+    width: 25rem;
+    height: 5rem;
+    border-radius: .5rem;
     border: none;
-    font-size: 20px;
+    font-size: 2rem;
     color: #fff;
     cursor: pointer;
     background-color: #27549e;
@@ -92,7 +93,7 @@
     align-items: center;
     text-align: center;
     padding: 0;
-    line-height: 50px;
+    line-height: 5rem;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
     transition: background-color 0.3s, box-shadow 0.3s;
 
@@ -104,12 +105,12 @@
 }
 
 .auth-button-text {
-    margin-top: -4px;
+    margin-top: -.4rem;
 }
 
 
 .divider {
-    margin-top: 40px;
+    margin-top: 4rem;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -132,25 +133,25 @@
 
 .divider-text {
     color: #e7e7e7;
-    font-size: 20px;
-    margin: 0 10px;
+    font-size: 2rem;
+    margin: 0 1rem;
 }
 
 .download-extension-button {
-    width: 250px;
-    height: 50px;
-    border-radius: 25px;
+    width: 25rem;
+    height: 5rem;
+    border-radius: 2.5rem;
     /* background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); */
     background: linear-gradient(135deg, #00c6fb 0%, #005bea 100%);
 
     color: white;
-    font-size: 20px;
+    font-size: 2rem;
     font-weight: bold;
 
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 2rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 
     transition: transform 0.2s;
@@ -159,8 +160,8 @@
 }
 
 .download-extension-icon {
-    font-size: 25px;
-    margin-right: 10px;
+    font-size: 2.5rem;
+    margin-right: 1rem;
     transition: transform 0.2s;
 
 }
@@ -184,28 +185,28 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 2rem;
     background-color: #000;
     color: #fff;
 
     position: absolute;
-    bottom: 10px;
+    bottom: 1rem;
 }
 
 .footer-logo img {
-    max-width: 100px;
-    margin-bottom: 10px;
+    max-width: 10rem;
+    margin-bottom: 1rem;
 }
 
 .footer-links {
-    font-size: 14px;
-    margin-left: 10px;
+    font-size: 1.4rem;
+
 }
 
 .footer-links a {
     color: #fff;
     text-decoration: none;
-    margin: 0 10px;
+    margin: 0 1rem;
 }
 
 .footer-links a:hover {
@@ -215,7 +216,7 @@
 .landing-right-content {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    /* justify-content: center; */
     align-items: center;
     height: 100%;
     position: relative;
@@ -223,15 +224,17 @@
 
 .landing-right-header {
     color: #fff;
-    font-size: 40px;
+    font-size: 4rem;
     font-weight: 600;
-    margin-bottom: 60px;
+    margin-bottom: 6rem;
     position: relative;
     display: inline-block;
     z-index: 1;
     overflow: visible;
 
-    margin-top: 250px;
+    margin-top: 23rem;
+
+    -webkit-transform: translate3d(0, 0, 0);
 }
 
 .landing-right-header::after {
@@ -245,10 +248,12 @@
     opacity: 1;
     z-index: -1;
     animation: highlightAnimation 1.5s 1.5s ease-in-out forwards;
+    -webkit-animation: highlightAnimation 1.5s 1.5s ease-in-out forwards;
 }
 
 .landing-right-header-fade-out::after {
     animation: fadeOutHighlight 1s ease-out forwards;
+    -webkit-animation: fadeOutHighlight 1s ease-out forwards;
 }
 
 
@@ -264,6 +269,20 @@
     }
 }
 
+@-webkit-keyframes highlightAnimation {
+    from {
+        right: 100%;
+        left: 0;
+    }
+
+    to {
+        right: 0;
+        left: 0;
+    }
+}
+
+
+
 @keyframes fadeOutHighlight {
     from {
         opacity: 1;
@@ -274,9 +293,19 @@
     }
 }
 
+@-webkit-keyframes fadeOutHighlight {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
 .text-logo {
-    width: 40px;
-    height: 40px;
+    width: 4rem;
+    height: 4rem;
     background-color: #BCDDFF;
     border: 2px solid #BCDDFF;
     border-radius: 10px;
@@ -293,8 +322,8 @@
     animation: fadeInPop 0.2s ease-out forwards;
 
     position: absolute;
-    top: -30px;
-    right: -30px;
+    top: -3rem;
+    right: -3rem;
     z-index: 2;
 
 }
@@ -304,8 +333,8 @@
 }
 
 .text-logo-img {
-    height: 30px;
-    width: 30px;
+    height: 3rem;
+    width: 3rem;
 }
 
 @keyframes fadeInPop {
@@ -337,65 +366,86 @@
     }
 }
 
-
-
-@media only screen and (max-width: 1500px) {
-    .right-panel-header {
-        color: #fff;
-        font-size: 35px;
-        font-weight: 600;
-        margin-bottom: 20px;
-    }
-
-    .download-extension-button {
-        width: 220px;
-        height: 45px;
-        font-size: 16px;
-    }
-
-    .auth-button-container {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        width: 600px;
-        margin-top: 40px;
-        margin-bottom: 60px;
-    }
-
-    .auth-button {
-        width: 220px;
-        height: 45px;
-        font-size: 16px;
-    }
-
-    .auth-button:not(:last-child) {
-        margin-right: 20px;
-    }
-
-    .landing-right-header {
-        font-size: 35px;
-        margin-bottom: 40px;
-
-    }
-}
-
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 1150px) {
     .landing-container {
-        display: flex;
         flex-direction: column;
-        height: auto;
-
-    }
-
-
-    .landing-left {
-        width: 100vw;
-        height: 100vh;
     }
 
     .landing-right {
         width: 100vw;
-        height: 100vh;
+        height: 90vh;
+    }
+
+    .landing-left {
+        width: 100vw;
+        height: 80vh
+    }
+
+    .footer {
+        scale: 0.9;
+    }
+}
+
+
+@media only screen and (max-width: 600px) {
+    .landing-right-header {
+        font-size: 3rem;
+        margin-bottom: 6rem;
+        margin-top: 25rem;
+
+    }
+}
+
+
+@media only screen and (max-width: 500px) {
+    .auth-button-container {
+        flex-direction: row;
+        justify-content: space-around;
+        width: 52rem;
+    }
+
+    .auth-button {
+        width: 22rem;
+        font-size: 2rem;
+    }
+}
+
+@media only screen and (max-width: 422px) {
+    .landing-right-header {
+        font-size: 2.6rem;
+
+
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .auth-button-container {
+        flex-direction: row;
+        justify-content: space-around;
+        width: 46rem;
+    }
+
+    .auth-button {
+        width: 18rem;
+        font-size: 2rem;
+    }
+}
+
+@media only screen and (max-width: 370px) {
+    .landing-right-header {
+        font-size: 2.3rem;
+    }
+}
+
+@media only screen and (max-width: 341px) {
+    .auth-button-container {
+        flex-direction: row;
+        justify-content: space-around;
+        width: 40rem;
+    }
+
+    .auth-button {
+        width: 15rem;
+        font-size: 1.7rem;
     }
 }
